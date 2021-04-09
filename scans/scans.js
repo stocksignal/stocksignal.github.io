@@ -7,7 +7,7 @@
 */
 const stocks = document.getElementById('stocklist');
 function data(filter){
-    let url = 'https://api.stockedge.com/Api/AlertsApi/GetSavedAlertsByType/2005/2021/04/05?relevantListings=' + filter;
+    let url = 'https://api.stockedge.com/Api/AlertsApi/GetSavedAlertsByType/2005?relevantListings=' + filter;
     fetch(url)
         .then((res) => res.json())
         .then((out) => {
