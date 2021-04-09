@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Change in Open Interest in the Indian indices. Find difference in the call and put options of the indices. Option Chain - NSE India" />
+    <meta itemprop="description" content="Stock Signal: Find an edge in option trading by analyzing real-time open interest data in the option chain. We provide the data, you do the trading.">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Stock Signal | Change in Open Interest | Indian Stock Market | Index Derivatives">
+    <meta property="og:description" content="Stock Signal: Find an edge in option trading by analyzing real-time open interest data in the option chain. We provide the data, you do the trading.">
+    <meta property="og:image" content="https://stocksignal.github.io/charts/stocksignals.jpeg">
+    <meta property="og:site_name" content="Stock Signals">
+    <meta property="og:type" content="website">
+    <meta name="keywords" content="Nifty option chain,  India stock market data, option chain analysis, change in oi data," />
+    <meta name="robots" content="index,follow" />
+    <META NAME="geo.placename" CONTENT="Mumbai">
+    <META NAME="geo.region" CONTENT="IN-MH">
+    <meta http-equiv="content-language" content="en-in" />
+    <link rel="alternate" hreflang="en" href="https://www.stocksignal.github.io/">
+    <link rel="canonical" href="https://stocksignal.github.io/range.html"/>
+    <link rel="alternate" hreflang="en-in" href="https://stocksignal.github.io/ipo/ipodetails.html" />
+    <link rel="icon" type="image/png" href="/charts/stocksignals.jpeg" sizes="32x32">
+    <link rel="icon" type="image/png" href="/charts/stocksignals.jpeg" sizes="16x16">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMW93LX17T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CMW93LX17T');
+    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="/range.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/indexrange/charts/chart.css">
+    <title>Stock Signal - Index Open Interest Data</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="header">
+            <div class="head">Stock <span>Signal</span>
+            </div>
+            <div class="sidebar">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                    <p id="emoji"></p>
+                </div>
+                <i class="fa fa-bars" id="menu" aria-hidden="true"></i>
+                <i class="fa fa-times" id="close" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="navtabs" id="navtabs">
+            <ul>
+                <li><a href="index.html">Home<i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li><a href="ipo/ipodetails.html">IPO details<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="scans/stockscans.html">Breakout stocks<i class="fa fa-line-chart"
+                            aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <hr>
+    </div>
+    <div class="btns">
+
+    </div>
+
+    <div class="api-container">
+
+        <div class="option-chain">
+            <div class="container">
+                <select name="index" id="index" onchange="changeoi(this);">
+                    <option value="niftyoichange" selected>NIFTY</option>
+                    <option value="bankniftyoichange">BANKNIFTY</option>
+
+                </select>
+                <div class="box1">
+                    <div class="ce">
+                        <h2>Total Call OI: </h2>
+                        <h2 id="totalce"></h2>
+                    </div>
+                    <div class="pe">
+                        <h2>Total Put OI: </h2>
+                        <h2 id="totalpe"></h2>
+                    </div>
+                    <div class="diff">
+                        <h2>Difference OI: </h2>
+                        <h2 id="diffoi"></h2>
+                    </div>
+                    <div class="signal">
+                        <h2 id="signal"></h2>
+                        <i class="fa fa-info-circle" aria-hidden="true"><span class="tooltiptext">Do not use this to
+                                make investment decisions.</span></i>
+                    </div>
+                </div>
+
+                <div class="chart">
+                    <div class="somebtns">
+                        <button id="show" onclick="showChart(event);">Show Chart</button>
+                        <button id="hide" onclick="hideChart(event);">Hide Chart</button>
+                        <button id="pageshare"
+                            value="Real-time change in Index Open Interest data: stocksignal.github.io"
+                            onclick="sharing(event);">
+                            Share page
+                        </button>
+                        <button id="pagerefresh" onclick="window.location.reload();">
+                            Refresh &#8635;
+                        </button>
+                    </div>
+                    <div id="ccontainer">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="ads">
+                    <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="/charts/stocksignals.jpeg" alt="Stock Signals">
+                    </a>
+                    <div class="ads-content">
+                        <h4>Stock Signals</h4>
+                        <p>Get free financial advice from experts. Checkout our Youtube channel for analysis and
+                            reports.</p>
+                        <a href="https://instagram.com/stock_signals__" target="_blank"><i class="fa fa-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank"><i
+                                class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <em id="placead">place ads</em>
+                    </div>
+
+                </div>
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>To place your ad here, send the details to this <a href="mailto:noobtrader81@gmail.com">Mail</a></p>
+                </div>
+
+            </div>
+            <div id="oidata">
+                <div class="tabletitle">Change in Open Interest(Strikes near to ATM only)</div>
+
+                <table id="oitable">
+                    <thead>
+                        <tr>
+                            <th>Call OI</th>
+                            <th>Strike</th>
+                            <th>Put OI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oirows">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+        <h2>Newsfeed &#128172;</h2>
+        <div id="newsfeed">
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>Copyright 2021. All Rights Reserved.<br>Design by <a href="/index.html">Sanketh Jain &#128081;</a></p>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/range.js"></script>
+<script src="/charts/darkMode.js"></script>
+<script src="/feed.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<script src="/charts/chart.js"></script>
+
+</html>

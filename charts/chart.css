@@ -1,0 +1,33 @@
+#show,#hide{
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 12px;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+#ccontainer{
+    margin: 10px;
+    position: relative; 
+    height:80vh; 
+    width:80vw
+}
+.somebtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    #ccontainer{
+        position: relative;
+        margin: 10px;
+        width: 90vw;
+        height: 40vh;
+    }
+}

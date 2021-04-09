@@ -1,0 +1,41 @@
+.breakout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#index{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+#stocklist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+.card{
+    width: 320px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -4px -4px 10px var(--boxshadow1),
+     4px 4px 10px var(--boxshadow2);
+}
+.card h3{
+    font-size: 14px;
+}
+.card h4{
+    font-size: 12px;
+}
+.card p{
+    opacity: 0.6;
+    font-size: 12px;
+}
