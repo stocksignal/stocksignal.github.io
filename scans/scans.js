@@ -21,9 +21,6 @@ function data(filter){
                             </div>`;
                 stocks.insertAdjacentHTML('beforeend',temp);
             });
-            
-
-            console.log(arr);
         })
 }
 
