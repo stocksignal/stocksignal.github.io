@@ -16,11 +16,12 @@ upipo.addEventListener('click', () => {
                     var temp = `<div class="card">
                 <div class="title">${ar.SecurityName}</div>
                     <div class="info">
-                        <ul>
-                            <li>Price Band: ${ar.IssuePriceMin} - ${ar.IssuePriceMax}</li>
-                            <li>Close Date: ${ar.OpenDate.substr(0, 10)}</li>
-                            <li>Close Date: ${ar.CloseDate.substr(0, 10)}</li>
-                        </ul>
+                    <ul>
+                    ${ar.IssuePriceMax ?
+                        `<li>Price Band: ${ar.IssuePriceMin} - ${ar.IssuePriceMax}</li>` : `<li>Price : ${ar.IssuePriceMin}</li>`}
+                        <li>Close Date: ${ar.OpenDate.substr(0, 10)}</li>
+                        <li>Close Date: ${ar.CloseDate.substr(0, 10)}</li>
+                    </ul>
                     </div>
                 </div>`;
                     details.insertAdjacentHTML('beforeend', temp);
