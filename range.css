@@ -201,10 +201,9 @@
        
        .api-container {
            display: flex;
-           flex-direction: column;
+           flex-direction: row;
            justify-content: center;
-           align-items: center;
-           flex-wrap: wrap;
+           align-items: flex-start;
        }
        
        .option-chain {
@@ -256,11 +255,9 @@
        
        .box1 {
            display: flex;
-           flex-direction: column;
            justify-content: center;
-           width: 300px;
-           height: 180px;
-           padding: 10px;
+           width: fit-content;
+           height: fit-content;
            border-radius: 10px;
            box-shadow: -10px -10px 20px var(--boxshadow1), 10px 10px 20px var(--boxshadow2);
        }
@@ -366,10 +363,13 @@
        .diff,
        .signal {
            display: flex;
-           font-size: 12px;
+           justify-content: center;
+           align-items: center;
+           font-size: 10px;
        }
        
        .signal {
+           margin-right: 10px;
            align-self: center;
            align-items: center;
            flex-direction: row;
@@ -475,7 +475,8 @@
            flex-wrap: wrap;
            justify-content: center;
            align-items: center;
-           height: 100vh;
+           width: 34vw;
+           height: 160vh;
            padding: 20px;
            margin-top: 20px;
        }
@@ -579,8 +580,12 @@
        }
        
        .footer {
+           display: flex;
+           justify-content: center;
+           align-items: center;
            text-align: center;
            font-size: 12px;
+           height: 20vh;
        }
        
        .footer a,
@@ -588,6 +593,9 @@
        .footer a:link {
            text-decoration: none;
            color: var(--primary-color);
+       }
+       .footer a:hover{
+           text-shadow: 2px 2px 2px red;
        }
        
        @media only screen and (max-width: 768px) {
