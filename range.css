@@ -127,7 +127,7 @@
        
        .fa-home,
        .fa-shopping-cart,
-       .fa-line-chart {
+       .fa-line-chart, .fa-rss {
            margin: 0 10px;
        }
        
@@ -669,7 +669,7 @@
            }
            .fa-home,
            .fa-shopping-cart,
-           .fa-line-chart {
+           .fa-line-chart, .fa-rss {
                margin: 0 10px;
            }
            hr {

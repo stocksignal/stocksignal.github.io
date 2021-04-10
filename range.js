@@ -118,6 +118,7 @@ function hideChart(e){
     document.getElementById('ccontainer').style.display = 'none';
 }
 
+//navbar open-close
 const menu = document.getElementById('menu');
 const close = document.getElementById('close');
 const nav = document.getElementById('navtabs');
