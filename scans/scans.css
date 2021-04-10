@@ -23,6 +23,7 @@
 }
 .card{
     width: 320px;
+    height: 120px;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -38,4 +39,38 @@
 .card p{
     opacity: 0.6;
     font-size: 12px;
+}
+#mdata{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.fiidata{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.fiicard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: -4px -4px 10px var(--boxshadow1),
+     4px 4px 10px var(--boxshadow2);
+}
+.fiicard-inside{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -20px;
+    font-size: 11px;
+}
+.card-inside{
+    margin: 10px;
+    padding: 10px;
 }

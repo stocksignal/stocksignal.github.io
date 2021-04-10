@@ -1,10 +1,46 @@
+const mdata = document.getElementById('mdata');
+
 /*
-{ID: 10, Name: "Major Stocks"}
-{ID: 2, Name: "NSE Stocks"}
-{ID: 3, Name: "BSE Stocks"}
-{ID: 6, Name: "NSE FO"}
-{ID: 8, Name: "Nifty 50"}
-*/
+DIICashMarketNet: -271.26
+Date: "2021-04-09T00:00:00"
+FIICashMarketNet: -653.51
+FIIIndexFutureNet: -639.48
+FIIIndexOptionNet: 1538.38
+FIIStockFutureNet: -666.24
+FIIStockOptionNet: -154.07 */
+
+function fiidata() {
+    let url = 'https://api.stockedge.com/Api/FIIDashboardApi/getLatestSevenDaysFIIActivities?lang=en';
+    fetch(url)
+        .then((res) => res.json())
+        .then((out) => {
+            let arr = out;
+            console.log(arr);
+            mdata.innerHTML= "";
+            for (let i = 0; i < 6; i++) {
+                var temp = `<div class="fiicard">
+                            <p>${arr[i].Date.substr(0,10)}</p>
+                            <div class="fiicard-inside">
+                                <div class="card-inside">
+                                    <p>Cash Market</p>
+                                    <h4>FII : ${arr[i].FIICashMarketNet}<br>DII : ${arr[i].DIICashMarketNet}</h4>
+                                </div>
+                                <div class="card-inside">
+                                    <p>FII on Index</p>
+                                    <h4>Futures : ${arr[i].FIIIndexFutureNet}<br>Options : ${arr[i].FIIIndexOptionNet}</h4>
+                                </div>
+                                <div class="card-inside">
+                                    <p>FII on Stocks</p>
+                                    <h4>Futures : ${arr[i].FIIStockFutureNet}<br>Options : ${arr[i].FIIStockOptionNet}</h4>
+                                </div>
+                            </div>
+                            </div>`;
+                mdata.insertAdjacentHTML('beforeend',temp);
+            }
+        })
+}
+
+
 const stocks = document.getElementById('stocklist');
 function data(filter){
     let url = 'https://api.stockedge.com/Api/AlertsApi/GetSavedAlertsByType/2005?relevantListings=' + filter;
@@ -35,7 +71,7 @@ check.addEventListener('change', () => {
     }
     
 })
-
+fiidata();
 data(10);
 
 /*navbar*/
