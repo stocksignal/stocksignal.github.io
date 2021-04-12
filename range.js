@@ -1,16 +1,6 @@
-var ctx = document.getElementById('myChart');
 const strike = [];
 const calloi = [];
 const putoi = [];
-
-function changeoi(that) {
-    if (that.value == 'niftyoichange') {
-        localStorage.setItem('index','niftyoichange');
-    } else if(that.value == 'bankniftyoichange'){
-        localStorage.setItem('index','bankniftyoichange');
-    }
-    runoi(that.value);
-}
 
 function runoi(option) {
     const url = 'https://api.niftytrader.in/api/FinNiftyOI/niftyoichange?reqType=' + option;
@@ -26,35 +16,36 @@ function runoi(option) {
                 ce = ce + element.calls_change_oi;
                 pe = pe + element.puts_change_oi;
             });
-            tce =ce;
-            tpe =pe;
-            doi = Math.abs(ce-pe);
+            tce = ce;
+            tpe = pe;
+            doi = Math.abs(ce - pe);
             totalce.innerHTML = ce.toLocaleString('en-IN');
             totalpe.innerHTML = pe.toLocaleString('en-IN');
             diffoi.innerHTML = doi.toLocaleString('en-IN');
-            
+
             var signal = document.getElementById('signal');
-            if( doi > 5000000 && tpe > tce ){
+            if (doi > 5000000 && tpe > tce) {
                 signal.innerText = "";
                 signal.innerHTML = "Bullish";
                 signal.style.color = 'var(--call)';
 
-            } else if( doi > 5000000 && tce > tpe){
+            } else if (doi > 5000000 && tce > tpe) {
                 signal.innerText = "";
                 signal.innerHTML = "Bearish";
                 signal.style.color = 'var(--put)';
-            } else{
+            } else {
                 signal.innerHTML = "Neutral";
                 signal.style.color = 'var(--font-color)';
             }
-            
+
             //chart code
-            let arr = out.resultData.data;       
-            for(let i=0; i< arr.length; i++){
+            let arr = out.resultData.data;
+            for (let i = 0; i < arr.length; i++) {
                 strike[i] = arr[i].strike_price
                 calloi[i] = arr[i].calls_change_oi
                 putoi[i] = arr[i].puts_change_oi
             }
+            let ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -80,7 +71,7 @@ function runoi(option) {
                             beginAtZero: true
                         }
                     },
-                }      
+                }
             });
 
 
@@ -93,44 +84,137 @@ function runoi(option) {
                 <td>${oi.strike_price}</td>
                 <td>${oi.puts_change_oi}</td></tr>`;
                 table.insertAdjacentHTML('beforeend', temp);
-    });
+            });
         })
         .catch(err => { throw err });
 }
 
+function runpcr() {
+    let option = localStorage.getItem('index1');
+    let pcrctx = document.getElementById('pcrChart');
+    const time = [];
+    const pcr = [];
+    const price = [];
+
+    fetch('https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType='+option+'pcr')
+        .then((res) => res.json())
+        .then((out) => {
+            let arr = out.resultData.data;
+            var data = arr.filter(function (a) {
+                return (a.time.slice(15, 16) == '0' || a.time.slice(15, 16) == '5' && a.banknifty_pcr_intra_id < 385);
+            })
+            console.log(data);
+
+            for (let i = 0; i < data.length; i++) {
+                time[i] = data[i].time.slice(11, 16);
+                pcr[i] = data[i].pcr;
+                price[i] = data[i].index_close;
+            }
+
+
+            var pcrData = {
+                label: 'PCR',
+                data: pcr,
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(255, 10, 10, 0.6)',
+                yAxisID: "y-axis-pcr"
+            };
+
+            var priceData = {
+                label: 'Index Price',
+                data: price,
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(0, 99, 132, 0.6)',
+                yAxisID: "y-axis-price"
+            };
+
+            var planetData = {
+                labels: time,
+                datasets: [pcrData, priceData],
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                stacked: false,
+            };
+
+            var chartOptions = {
+                scales: {
+                    xAxes: [{
+                        barPercentage: 1,
+                        categoryPercentage: 0.6
+                    }],
+                    yAxes: [{
+                        id: "y-axis-pcr",
+                        position: "right",
+                    }, {
+                        id: "y-axis-price",
+                        position: "left",
+                    }]
+                }
+            };
+
+            var barChart = new Chart(pcrctx, {
+                type: 'line',
+                data: planetData,
+                options: chartOptions
+            });
+
+
+        })
+        .catch((e) => { console.error(e); })
+}
+
+function changeoi(that) {
+    if (that.value == 'niftyoichange') {
+        localStorage.setItem('index', 'niftyoichange');
+        localStorage.setItem('index1', 'nifty');
+    } else if (that.value == 'bankniftyoichange') {
+        localStorage.setItem('index', 'bankniftyoichange');
+        localStorage.setItem('index1', 'banknifty');
+    }
+    window.location.reload();
+    runoi(that.value);
+    runpcr();
+}
+
 var option = localStorage.getItem('index');
-if(!option){
-    localStorage.setItem('index','niftyoichange');
+if (!option) {
+    localStorage.setItem('index', 'niftyoichange');
+    localStorage.setItem('index1', 'nifty');
     var option = localStorage.getItem('index');
 }
 document.getElementById('index').value = option;
 runoi(option);
+runpcr();
 
-
-function showChart(e){
-    e.preventDefault();
+function showChart() {
+    localStorage.setItem('chart', 'oi');
+    document.getElementById('pcrcontainer').style.display = 'none';
     document.getElementById('ccontainer').style.display = 'block';
-    
+
 }
 
-function hideChart(e){
-    e.preventDefault();
+function hideChart() {
+    localStorage.setItem('chart', 'pcr');
     document.getElementById('ccontainer').style.display = 'none';
+    document.getElementById('pcrcontainer').style.display = 'block';
 }
 
 //navbar open-close
 const menu = document.getElementById('menu');
 const close = document.getElementById('close');
 const nav = document.getElementById('navtabs');
-menu.addEventListener('click',()=>{
-    nav.style.display='block';
-    menu.style.display='none';
-    close.style.display='block';
+menu.addEventListener('click', () => {
+    nav.style.display = 'block';
+    menu.style.display = 'none';
+    close.style.display = 'block';
 })
-close.addEventListener('click',()=>{
-    nav.style.display='none';
-    close.style.display='none';
-    menu.style.display='block';
+close.addEventListener('click', () => {
+    nav.style.display = 'none';
+    close.style.display = 'none';
+    menu.style.display = 'block';
 })
 
 // Get the modal
@@ -138,14 +222,24 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("placead");
 var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function() {
-  modal.style.display = "block";
+btn.onclick = function () {
+    modal.style.display = "block";
 }
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
+span.onclick = function () {
     modal.style.display = "none";
-  }
+}
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+var chartx = localStorage.getItem('chart');
+if(!chartx){
+    localStorage.setItem('chart', 'oi');
+    showChart();
+}else if(chartx == 'oi'){
+    showChart();
+}
+else if( chartx == 'pcr'){
+    hideChart();
 }

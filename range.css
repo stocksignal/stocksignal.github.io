@@ -244,6 +244,7 @@
            height: 40px;
            padding: 0 10px;
            font-size: 20px;
+           cursor: pointer;
            font-weight: 500;
            color: var(--bg-color);
            background-color: var(--primary-color);
@@ -252,7 +253,9 @@
            border-radius: 10px;
            margin: 20px auto;
        }
-       
+       #index:hover{
+        box-shadow: -4px -4px 10px var(--boxshadow2), 4px 4px 10px var(--boxshadow2);
+       }
        .box1 {
            display: flex;
            justify-content: center;
