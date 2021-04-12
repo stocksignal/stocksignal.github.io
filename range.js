@@ -101,7 +101,7 @@ function runpcr() {
         .then((out) => {
             let arr = out.resultData.data;
             var data = arr.filter(function (a) {
-                return (a.time.slice(15, 16) == '0' || a.time.slice(15, 16) == '5' && a.banknifty_pcr_intra_id < 385);
+                return (a.time.slice(15, 16) == '0' && a.banknifty_pcr_intra_id < 385);
             })
             console.log(data);
 
