@@ -33,13 +33,15 @@
 
 @media only screen and (max-width: 768px) {
     #ccontainer{
+        display: none;
         position: relative;
         margin: 10px;
         width: 90vw;
         height: 40vh;
     }
     #pcrcontainer{
-     position: relative;
+        display:none;
+        position: relative;
         margin: 10px;
         width: 90vw;
         height: 50vh;
