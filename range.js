@@ -137,11 +137,11 @@ function runpcr() {
                     intersect: false,
                 },
                 stacked: false,
-                maintainAspectRatio:
-                        false,
             };
 
             var chartOptions = {
+                maintainAspectRatio:
+                        false,
                 scales: {
                     xAxes: [{
                         barPercentage: 1,
