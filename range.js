@@ -137,6 +137,8 @@ function runpcr() {
                     intersect: false,
                 },
                 stacked: false,
+                maintainAspectRatio:
+                        false,
             };
 
             var chartOptions = {
