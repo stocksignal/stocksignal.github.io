@@ -12,6 +12,7 @@
            --put: rgb(140, 0, 0);
            --time: rgb(140, 140, 140);
            --hr: rgb(200, 200, 200);
+           --th: #dddddd;
        }
        
        [data-theme="dark"] {
@@ -27,6 +28,7 @@
            --call: rgb(82, 255, 82);
            --put: rgb(255, 82, 82);
            --hr: rgb(0, 0, 0);
+           --th: #111111;
        }
        
        body {
@@ -231,6 +233,7 @@
        }
        
        .tabletitle {
+           font-size: 20px;
            margin: 20px auto;
        }
        
@@ -450,27 +453,33 @@
            margin: 10px;
        }
        
-      td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-              font-size: 14px;
-}
+        td, th {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+             user-select: none;
+            border: 1px solid #555;
+            padding: 8px;
+            font-size: 16px;
+            width: 100px;
+            text-align: center;
+        }
 
-tr:nth-child(even){
-        background-color: #f2f2f2;
-}
+        tr:nth-child(even){
+            background-color: var(--boxshadow1);
+        }
 
-tr:hover {
-        background-color: #ddd;
-}
+        tr:hover {
+            cursor: default;
+            background-color: var(--boxshadow2);
+        }
 
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--th);
+        }
  
        
         ::-webkit-scrollbar {
@@ -767,6 +776,7 @@ th {
            }
            .tabletitle {
                margin: 20px auto;
+               font-size: 18px;
            }
            #oirows,
            #oitable {
