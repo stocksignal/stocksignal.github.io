@@ -1,4 +1,5 @@
 .breakout{
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,6 +48,7 @@
     align-items: center;
 }
 .fiidata{
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,4 +75,35 @@
 .card-inside{
     margin: 10px;
     padding: 10px;
+}
+#corporate{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+#csv-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.ca-card{
+    width: 360px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: -4px -4px 10px var(--boxshadow1),
+     4px 4px 10px var(--boxshadow2);
+}
+.ca-card #dates{
+    opacity: 0.9;
+    font-size: 12px;
+}
+.ca-card p{
+    font-size: 14px;
 }
