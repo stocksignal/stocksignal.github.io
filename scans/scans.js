@@ -63,53 +63,6 @@ check.addEventListener('change', () => {
     
 })
 
-//corporate actions data
-function csvToJSON(csv, delimiter) {
-    var lines = csv.split("\n");
-    var result = [];
-    var headers;
-    headers = lines[0].split(delimiter);
-
-    for (var i = 1; i < lines.length; i++) {
-        var obj = {};
-
-        if(lines[i] == undefined || lines[i].trim() == "") {
-            continue;
-        }
-
-        var words = lines[i].split(",");
-        for(var j = 0; j < words.length; j++) {
-            obj[headers[j].trim()] = words[j];
-        }
-
-        result.push(obj);
-    }
-    return result;
-}
-  
-
-function getarraydata(res){
-    let word_array = csvToJSON(res,',');
-    console.log(word_array);
-    ca.innerHTML = "";
-    word_array.forEach(arr => {
-        var temp = `<div class="ca-card">
-        <h3>${arr.company.slice(1,arr.company.length-1)} : [${arr.symbol.slice(1,arr.symbol.length-1)}]</h3>
-        <p>${arr.purpose.slice(2,arr.purpose.length-1)}</p>
-        <p id="dates">Ex-Date: ${arr.ex_date.slice(1,arr.ex_date.length-1)}<br>
-        Record Date: ${arr.record_date.slice(1,arr.record_date.length-1)}</p>
-        </div>`;
-    ca.insertAdjacentHTML('beforeend',temp);
-    });
-}
-$.ajax({
-    url: "/data/cadata.csv",
-    async: true,
-    success: function(response){ 
-        getarraydata(response)
-    },
-    dataType: "text"
-});
 
 
 //start functions
