@@ -207,7 +207,15 @@
            justify-content: center;
            align-items: flex-start;
        }
-       
+       .index_header{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+       .index_value{
+        font-size: 20px;
+        margin-left: 20px;
+       }
        .option-chain {
            display: flex;
            flex-direction: column;
