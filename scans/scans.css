@@ -48,29 +48,38 @@
     align-items: center;
 }
 .fiidata{
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-.fiicard{
+.nifty{
+    font-weight: 900;
+    font-size: 20px;
+}
+.emtext{
+    font-size: 10px;
+    margin-left: 10px;
+}
+.chartbox{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 380px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: -4px -4px 10px var(--boxshadow1),
-     4px 4px 10px var(--boxshadow2);
-}
-.fiicard-inside{
-    display: flex;
     flex-wrap: wrap;
-    margin-top: -20px;
-    font-size: 11px;
+}
+#fiicontainer{
+    margin: 10px;
+    position: relative; 
+    height:65vh; 
+    width:60vw;
+}
+#adcontainer{
+    margin: 10px;
+    position: relative; 
+    height:65vh; 
+    width:30vw;
 }
 .card-inside{
     margin: 10px;
@@ -106,4 +115,18 @@
 }
 .ca-card p{
     font-size: 14px;
+}
+@media only screen and (max-width: 768px) {
+    #fiicontainer{
+        margin: 10px;
+        position: relative; 
+        height:35vh; 
+        width:90vw;
+    }
+    #adcontainer{
+        margin: 10px;
+        position: relative; 
+        height:35vh; 
+        width:80vw;
+    }
 }

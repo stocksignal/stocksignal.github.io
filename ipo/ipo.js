@@ -10,7 +10,7 @@ upipo.addEventListener('click', () => {
             let arr = out;
             details.innerText = '';
             if (arr.length <= 0) {
-                details.innerHTML = "No upcoming IPO";
+                details.innerHTML = "<div style='margin-top:20px;'>No upcoming IPO</div>";
             } else {
                 arr.forEach(ar => {
                     var temp = `<div class="card">

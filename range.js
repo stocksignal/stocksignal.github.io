@@ -46,7 +46,7 @@ function runoi(option) {
                 putoi[i] = arr[i].puts_change_oi
             }
             let ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: strike,
@@ -103,7 +103,6 @@ function runpcr() {
             var data = arr.filter(function (a) {
                 return (a.time.slice(15, 16) == '0' && a.banknifty_pcr_intra_id < 385);
             })
-            console.log(data);
 
             for (let i = 0; i < data.length; i++) {
                 time[i] = data[i].time.slice(11, 16);
@@ -189,7 +188,7 @@ if (!option) {
 }
 document.getElementById('index').value = option;
 runoi(option);
-runpcr();
+// runpcr();
 
 function showChart() {
     localStorage.setItem('chart', 'oi');

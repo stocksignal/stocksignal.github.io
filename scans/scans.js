@@ -1,5 +1,44 @@
 const mdata = document.getElementById('mdata');
-const ca = document.getElementById('csv-display');
+
+function advance(){
+    let url = 'https://api.stockedge.com/Api/WidgetsApi/GetAdvanceDeclineForNifty50Index?lang=en';
+    fetch(url)
+    .then((res) => res.json())
+    .then((out) => {
+        let arr = out;
+        console.log(arr);
+        let addata = [];
+        addata[0] = arr.AdvancedCount;
+        addata[1] = arr.DeclinedCount;
+        let ctx = document.getElementById('adChart');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Advance',
+                    'Decline',
+                  ],
+                  datasets: [{
+                    label: 'NIFTY 50 Advances & Declines',
+                    data: addata,
+                    borderWidth: 0,
+                    backgroundColor: ['rgb(43,135,65)',
+                      'rgb(133,62,187)'
+                    ],
+                    hoverOffset: 4
+                  }]
+            },
+            options: {
+                maintainAspectRatio:
+                    false,
+                title: {
+                      display: true,
+                      text: 'NIFTY 50 Advances & Declines'
+                    }
+            }
+        });
+    })
+}
 
 function fiidata() {
     let url = 'https://api.stockedge.com/Api/FIIDashboardApi/getLatestSevenDaysFIIActivities?lang=en';
@@ -7,27 +46,45 @@ function fiidata() {
         .then((res) => res.json())
         .then((out) => {
             let arr = out;
+            console.log(arr);
+            let date = [];
+            let fiicash = [];
+            let diicash = [];
+            let price = [];
             mdata.innerHTML= "";
-            for (let i = 0; i < 6; i++) {
-                var temp = `<div class="fiicard">
-                            <p>${arr[i].Date.substr(0,10)}</p>
-                            <div class="fiicard-inside">
-                                <div class="card-inside">
-                                    <p>Cash Market</p>
-                                    <h4>FII : ${arr[i].FIICashMarketNet}<br>DII : ${arr[i].DIICashMarketNet}</h4>
-                                </div>
-                                <div class="card-inside">
-                                    <p>FII on Index</p>
-                                    <h4>Futures : ${arr[i].FIIIndexFutureNet}<br>Options : ${arr[i].FIIIndexOptionNet}</h4>
-                                </div>
-                                <div class="card-inside">
-                                    <p>FII on Stocks</p>
-                                    <h4>Futures : ${arr[i].FIIStockFutureNet}<br>Options : ${arr[i].FIIStockOptionNet}</h4>
-                                </div>
-                            </div>
-                            </div>`;
-                mdata.insertAdjacentHTML('beforeend',temp);
+            var temp = `<div class="nifty">${arr[0].ClosePrices[0].Symbol} : ${arr[0].ClosePrices[0].Close}</div>
+            <em class="emtext">(Updated at : ${arr[0].Date.substr(0,10)})</em>`;
+            mdata.insertAdjacentHTML('beforeend',temp);
+            for (let i = 0; i < arr.length; i++) {
+                date.push(arr[i].Date.substr(0,10));
+                fiicash.push(arr[i].FIICashMarketNet);
+                diicash.push(arr[i].DIICashMarketNet);
+                price.push(arr[i].ClosePrices[0].Close);
             }
+            let ctx = document.getElementById('fiiChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: date.reverse(),
+                    datasets: [{
+                        label: 'FII in Crores',
+                        data: fiicash.reverse(),
+                        borderWidth: 4,
+                        borderColor: "rgb(133,62,187)",
+                        backgroundColor: "rgba(230,230,0,0)",
+                    },{
+                        label: 'DII in Crores',
+                        data: diicash.reverse(),
+                        borderWidth: 4,
+                        borderColor: "rgb(43,135,65)",
+                        backgroundColor: "rgba(45,80,250,0)",
+                    }]
+                },
+                options: {
+                    maintainAspectRatio:
+                        false,
+                }
+            });
         })
 }
 
@@ -67,6 +124,7 @@ check.addEventListener('change', () => {
 
 //start functions
 fiidata();
+advance();
 data(10);
 
 /*navbar*/
