@@ -53,7 +53,7 @@
 <body>
     <div class="navbar">
         <div class="header">
-            <div class="head">Stock <span>Signal</span>
+            <div class="head" onclick="window.location='/'">Stock <span>Signal</span>
             </div>
             <div class="sidebar">
                 <div class="theme-switch-wrapper">
@@ -92,23 +92,23 @@
                         <option value="niftyoichange" selected>NIFTY</option>
                         <option value="bankniftyoichange">BANKNIFTY</option>
                     </select>
-                    <div class="index_value">14500</div>
+                    <div class="index_value" id="index_value">Loading...</div>
                 </div>
                 <div class="box1">
                     <div class="ce">
                         <h2>Total Call OI: </h2>
-                        <h2 id="totalce"></h2>
+                        <h2 id="totalce">Loading...</h2>
                     </div>
                     <div class="pe">
                         <h2>Total Put OI: </h2>
-                        <h2 id="totalpe"></h2>
+                        <h2 id="totalpe">Loading...</h2>
                     </div>
                     <div class="diff">
                         <h2>Difference OI: </h2>
-                        <h2 id="diffoi"></h2>
+                        <h2 id="diffoi">Loading...</h2>
                     </div>
                     <div class="signal">
-                        <h2 id="signal"></h2>
+                        <h2 id="signal">No signal</h2>
                         <i class="fa fa-info-circle" aria-hidden="true"><span class="tooltiptext">Do not use this to
                                 make investment decisions.</span></i>
                     </div>

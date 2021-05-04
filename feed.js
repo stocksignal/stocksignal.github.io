@@ -12,7 +12,7 @@ function sharing(e){
 
 }
 function handledata(out){
-    let arr = out.resultData;
+    let arr = out;
     const newsfeed = document.getElementById('newsfeed');
     for(let i=0; i< 10; i++) {
         let description = arr[i].description;
@@ -32,7 +32,7 @@ function handledata(out){
 }
 
 
-const url = 'https://api.niftytrader.in/api/Resources/GetRssFeedDataHome';
+const url = 'https://oidata-server.herokuapp.com/api/newsfeed';
     fetch(url)
         .then(res => res.json())
         .then((out) => {

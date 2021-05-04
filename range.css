@@ -66,6 +66,7 @@
        }
        
        .head {
+           cursor: pointer;
            text-decoration: none;
            font-size: 24px;
            margin-left: 20px;
@@ -213,6 +214,7 @@
            align-items: center;
        }
        .index_value{
+        font-weight: 900;
         font-size: 20px;
         margin-left: 20px;
        }

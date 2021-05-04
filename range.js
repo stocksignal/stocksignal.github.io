@@ -2,7 +2,26 @@ const strike = [];
 const calloi = [];
 const putoi = [];
 
+function getindexvalue(option){
+    const index = document.getElementById('index_value');
+    
+    fetch('https://oidata-server.herokuapp.com/api/indexdata')
+    .then((res)=> res.json())
+    .then((out)=>{
+        if(option == 'niftyoichange'){
+            index.innerHTML = '';
+            index.innerHTML = out.nifty50.last_trade_price;
+        }else if(option == 'bankniftyoichange'){
+            index.innerHTML = '';
+            index.innerHTML = out.niftybank.last_trade_price;
+        }else{
+            index.innerHTML = '';
+        }
+    });
+}
+
 function runoi(option) {
+    getindexvalue(option);
     const url = 'https://api.niftytrader.in/api/FinNiftyOI/niftyoichange?reqType=' + option;
     fetch(url)
         .then(res => res.json())

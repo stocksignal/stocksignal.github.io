@@ -15,7 +15,7 @@ function makechart(time,diffoi){
             datasets: [{
                 label: 'Difference in OI',
                 data: diffoi,
-                borderWidth: 4,
+                borderWidth: 2,
                 backgroundColor: 'transparent',
                 borderColor: getcolor(),
             }],
