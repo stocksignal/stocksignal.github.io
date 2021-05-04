@@ -8,10 +8,10 @@ function getindexvalue(option){
     fetch('https://oidata-server.herokuapp.com/api/indexdata')
     .then((res)=> res.json())
     .then((out)=>{
-        if(option == 'niftyoichange'){
+        if(option == 'niftyoichangedata'){
             index.innerHTML = '';
             index.innerHTML = out.nifty50.last_trade_price;
-        }else if(option == 'bankniftyoichange'){
+        }else if(option == 'bankniftyoichangedata'){
             index.innerHTML = '';
             index.innerHTML = out.niftybank.last_trade_price;
         }else{
@@ -22,16 +22,17 @@ function getindexvalue(option){
 
 function runoi(option) {
     getindexvalue(option);
-    const url = 'https://api.niftytrader.in/api/FinNiftyOI/niftyoichange?reqType=' + option;
+    const url = 'https://oidata-server.herokuapp.com/api/' + option;
     fetch(url)
         .then(res => res.json())
         .then((out) => {
+            console.log(out);
             var oidata = document.getElementById("oidata");
             var totalce = document.getElementById("totalce");
             var totalpe = document.getElementById("totalpe");
             var diffoi = document.getElementById("diffoi");
             let ce = 0, pe = 0;
-            out.resultData.data.forEach(function (element) {
+            out.data.forEach(function (element) {
                 ce = ce + element.calls_change_oi;
                 pe = pe + element.puts_change_oi;
             });
@@ -58,7 +59,7 @@ function runoi(option) {
             }
 
             //chart code
-            let arr = out.resultData.data;
+            let arr = out.data;
             for (let i = 0; i < arr.length; i++) {
                 strike[i] = arr[i].strike_price
                 calloi[i] = arr[i].calls_change_oi
@@ -94,7 +95,7 @@ function runoi(option) {
             });
 
 
-            let oichain = out.resultData.data;
+            let oichain = out.data;
             const table = document.getElementById('oirows');
             table.innerText = '';
             oichain.forEach(oi => {
@@ -187,11 +188,11 @@ function runpcr() {
 }
 
 function changeoi(that) {
-    if (that.value == 'niftyoichange') {
-        localStorage.setItem('index', 'niftyoichange');
+    if (that.value == 'niftyoichangedata') {
+        localStorage.setItem('index', 'niftyoichangedata');
         localStorage.setItem('index1', 'nifty');
-    } else if (that.value == 'bankniftyoichange') {
-        localStorage.setItem('index', 'bankniftyoichange');
+    } else if (that.value == 'bankniftyoichangedata') {
+        localStorage.setItem('index', 'bankniftyoichangedata');
         localStorage.setItem('index1', 'banknifty');
     }
     window.location.reload();
@@ -201,7 +202,7 @@ function changeoi(that) {
 
 var option = localStorage.getItem('index');
 if (!option) {
-    localStorage.setItem('index', 'niftyoichange');
+    localStorage.setItem('index', 'niftyoichangedata');
     localStorage.setItem('index1', 'nifty');
     var option = localStorage.getItem('index');
 }

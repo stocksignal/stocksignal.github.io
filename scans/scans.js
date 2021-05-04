@@ -1,12 +1,11 @@
 const mdata = document.getElementById('mdata');
 
 function advance(){
-    let url = 'https://api.stockedge.com/Api/WidgetsApi/GetAdvanceDeclineForNifty50Index?lang=en';
+    let url = 'https://oidata-server.herokuapp.com/api/getadvancedecline';
     fetch(url)
     .then((res) => res.json())
     .then((out) => {
         let arr = out;
-        console.log(arr);
         let addata = [];
         addata[0] = arr.AdvancedCount;
         addata[1] = arr.DeclinedCount;
@@ -41,12 +40,11 @@ function advance(){
 }
 
 function fiidata() {
-    let url = 'https://api.stockedge.com/Api/FIIDashboardApi/getLatestSevenDaysFIIActivities?lang=en';
+    let url = 'https://oidata-server.herokuapp.com/api/fiidata';
     fetch(url)
         .then((res) => res.json())
         .then((out) => {
             let arr = out;
-            console.log(arr);
             let date = [];
             let fiicash = [];
             let diicash = [];
