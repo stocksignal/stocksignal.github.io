@@ -13,6 +13,7 @@ function sharing(e){
 }
 function handledata(out){
     let arr = out.resultData;
+    console.log(arr);
     const newsfeed = document.getElementById('newsfeed');
     for(let i=0; i< 10; i++) {
         let description = arr[i].description;
@@ -20,7 +21,6 @@ function handledata(out){
         let time = arr[i].publishDate;
         let temptime = '&#8986; '+time.slice(11,16)+' ['+time.slice(0,10)+']';
         let temp = `<div class="newscard">
-                    <img src="${arr[i].imageUrl}">
                     <div class="desc">
                         <a href="${arr[i].url}" target="_blank">${arr[i].title}</a>
                         <p id="description">${tempdesc}</p>
