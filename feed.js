@@ -15,7 +15,7 @@ function handledata(out){
     let arr = out.resultData;
     console.log(arr);
     const newsfeed = document.getElementById('newsfeed');
-    for(let i=0; i< 10; i++) {
+    for(let i=0; i< arr.length; i++) {
         let description = arr[i].description;
         let tempdesc = description.slice(0,100)+'...';
         let time = arr[i].publishDate;
