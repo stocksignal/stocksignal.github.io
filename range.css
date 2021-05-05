@@ -296,8 +296,8 @@ box-shadow: -2px -2px 10px var(--boxshadow2), 2px 2px 10px var(--boxshadow2);
     box-shadow: -10px -10px 20px var(--boxshadow1), 10px 10px 20px var(--boxshadow2);
     transition: box-shadow 0.33s ease-in-out; 
 }
-.ads:hover{
-box-shadow: inset -10px -10px 20px var(--boxshadow1), inset 10px 10px 20px var(--boxshadow2);
+.ads:active{
+box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--boxshadow2);
 }
 .ads img {
     width: 100px;
@@ -328,7 +328,13 @@ box-shadow: inset -10px -10px 20px var(--boxshadow1), inset 10px 10px 20px var(-
     margin: 0 10px;
 }
 /* The Modal (background) */
-
+.sometext{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:90vh;
+    padding:20px;
+}
 .modal {
     display: none;
     /* Hidden by default */
