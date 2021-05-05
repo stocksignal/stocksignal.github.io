@@ -26,11 +26,12 @@ function newssharing(e){
   e.preventDefault();
   console.log(e.path[2].children[2].value);
     if (navigator.share) {
-        navigator.share({
-          title: 'Newsfeed from Stock Signal',
-          url: 'Get buzzing financial news at : https://stocksignal.github.io',
-          text: e.path[2].children[2].value +'\n'+e.target.value
-        }).then(() => {
+      let shareData = {
+        title: 'Newsfeed from Stock Signal',
+        url: 'Get buzzing financial news at : https://stocksignal.github.io',
+        text: e.path[2].children[2].value +' : '+e.target.value
+      }
+        navigator.share(shareData).then(() => {
           console.log('Thanks for sharing!');
         })
         .catch(console.error);
