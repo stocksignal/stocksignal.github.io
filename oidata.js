@@ -1,4 +1,4 @@
-function getcolor(){
+function getpricecolor(){
     var theme = localStorage.getItem('theme');
     if(theme == 'dark'){
         return 'rgb(255,255,0)'
@@ -6,41 +6,60 @@ function getcolor(){
         return 'rgb(0,0,255)'
     }
 }
-function makechart(time,diffoi){
+function makechart(time,diffoi,price){
     let oichart = document.getElementById('pcrChart');
+    
+    var indexdata = {
+        label: 'Index Price',
+        data: price,
+        backgroundColor: 'transparent',
+        borderColor: getpricecolor(),
+        yAxisID: "y-axis-pcr"
+    };
+
+    var diffoidata = {
+        label: 'Total CE - PE OI',
+        data: diffoi,
+        backgroundColor: 'transparent',
+        borderColor: 'rgb(43,135,65)',
+        yAxisID: "y-axis-price"
+    };
+
+    var oichartdata = {
+        labels: time,
+        datasets: [indexdata, diffoidata],
+        responsive: true,
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+        stacked: false,
+    };
+
+    var chartOptions = {
+        maintainAspectRatio:
+                false,
+        scales: {
+            xAxes: [{
+                barPercentage: 1,
+                categoryPercentage: 0.6
+            }],
+            yAxes: [{
+                id: "y-axis-pcr",
+                position: "left",
+            }, {
+                id: "y-axis-price",
+                position: "right",
+            }]
+        }
+    };
+
     new Chart(oichart, {
         type: 'line',
-        data: {
-            labels: time,
-            datasets: [{
-                label: 'Difference in OI',
-                data: diffoi,
-                borderWidth: 2,
-                backgroundColor: 'transparent',
-                borderColor: getcolor(),
-            }],
-        },
-        options: {
-            elements:{
-                line:{
-                    tension: 0.4
-                },
-                point:{
-                    fill: true,
-                    radius: 0,
-                    hoverRadius: 5,
-                },
-            },
-            
-            maintainAspectRatio:
-                false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-        }
+        data: oichartdata,
+        options: chartOptions
     });
+
    
 }
 function getoidata(){
@@ -54,6 +73,7 @@ fetch(url)
             let diffoi = [];
             
             arr.forEach(ar => {
+                price.push(ar.cmp);
                 let data = ar.niftyoi;
                 time.push(ar.timestamp.slice(11,16));
                 let ce = 0, pe = 0;
@@ -61,9 +81,10 @@ fetch(url)
                     ce = ce + d.calls_change_oi;
                     pe = pe + d.puts_change_oi;
                 });
-                diffoi.push(pe-ce);
+                diffoi.push(ce-pe);
             });
-            makechart(time,diffoi);
+            makechart(time,diffoi,price);
+
         })
 }
 getoidata();

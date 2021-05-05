@@ -26,7 +26,6 @@ function runoi(option) {
     fetch(url)
         .then(res => res.json())
         .then((out) => {
-            console.log(out);
             var oidata = document.getElementById("oidata");
             var totalce = document.getElementById("totalce");
             var totalpe = document.getElementById("totalpe");
