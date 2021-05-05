@@ -94,7 +94,6 @@ function getoidata(){
         .then((res) => res.json())
             .then((out) => {
                 let arr = out;
-                console.log(arr);
                 let time = [];
                 let price = [];
                 let diffoi = [];
