@@ -1,14 +1,24 @@
 function sharing(e){
     e.preventDefault();
 
-    str = e.target.value;
-    const el = document.createElement('textarea');
-    el.value = str;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    alert('Copied the link to clipboard');
+    if (navigator.share) {
+        navigator.share({
+          title: 'Stocksignal',
+          url: e.target.value
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+      } else {
+        str = e.target.value;
+        const el = document.createElement('textarea');
+        el.value = str;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('Copied the link to clipboard');
+      }
 
 }
 function handledata(out){

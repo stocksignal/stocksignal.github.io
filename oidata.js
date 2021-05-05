@@ -63,29 +63,56 @@ function makechart(time,diffoi,price){
    
 }
 function getoidata(){
-let url = 'https://oidata-server.herokuapp.com/oidata/niftyoi';
-fetch(url)
-.then((res) => res.json())
-        .then((out) => {
-            let arr = out;
-            let time = [];
-            let price = [];
-            let diffoi = [];
-            
-            arr.forEach(ar => {
-                price.push(ar.cmp);
-                let data = ar.niftyoi;
-                time.push(ar.timestamp.slice(11,16));
-                let ce = 0, pe = 0;
-                data.forEach(d => {
-                    ce = ce + d.calls_change_oi;
-                    pe = pe + d.puts_change_oi;
+    var index = localStorage.getItem('index');
+    if (index == 'niftyoichangedata'){
+        let url = 'https://oidata-server.herokuapp.com/oidata/niftyoi';
+        fetch(url)
+        .then((res) => res.json())
+            .then((out) => {
+                let arr = out;
+                let time = [];
+                let price = [];
+                let diffoi = [];
+                
+                arr.forEach(ar => {
+                    price.push(ar.cmp);
+                    let data = ar.niftyoi;
+                    time.push(ar.timestamp.slice(11,16));
+                    let ce = 0, pe = 0;
+                    data.forEach(d => {
+                        ce = ce + d.calls_change_oi;
+                        pe = pe + d.puts_change_oi;
+                    });
+                    diffoi.push(ce-pe);
                 });
-                diffoi.push(ce-pe);
-            });
-            makechart(time,diffoi,price);
+                makechart(time,diffoi,price);
 
-        })
+            })
+    } else if( index == 'bankniftyoichangedata'){
+        let url = 'https://oidata-server.herokuapp.com/oidata/bankniftyoi';
+        fetch(url)
+        .then((res) => res.json())
+            .then((out) => {
+                let arr = out;
+                console.log(arr);
+                let time = [];
+                let price = [];
+                let diffoi = [];
+                
+                arr.forEach(ar => {
+                    price.push(ar.cmp);
+                    let data = ar.bankniftyoi;
+                    time.push(ar.timestamp.slice(11,16));
+                    let ce = 0, pe = 0;
+                    data.forEach(d => {
+                        ce = ce + d.calls_change_oi;
+                        pe = pe + d.puts_change_oi;
+                    });
+                    diffoi.push(ce-pe);
+                });
+                makechart(time,diffoi,price);
+            });
+    }
 }
 getoidata();
 
