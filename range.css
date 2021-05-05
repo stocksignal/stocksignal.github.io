@@ -332,7 +332,8 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     display:flex;
     justify-content:center;
     align-items:center;
-    height:90vh;
+    height:65vh;
+    text-align: center;
     padding:20px;
 }
 .modal {
