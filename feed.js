@@ -3,8 +3,9 @@ function sharing(e){
 
     if (navigator.share) {
         navigator.share({
-          title: 'Stocksignal',
-          url: e.target.value
+          title: 'Stock Signal',
+          text: 'Now you can check change in Open Interest v/s Index price.',
+          url:'https://stocksignal.github.io'
         }).then(() => {
           console.log('Thanks for sharing!');
         })
