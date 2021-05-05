@@ -4,7 +4,7 @@ function sharing(e){
     if (navigator.share) {
         navigator.share({
           title: 'Stock Signal',
-          text: 'Now you can check change in Open Interest v/s Index price.',
+          text: 'Open Interest, FII/DII Data, NIFTY50 Advances/Declines, IPO Details and much more. Now you can check change in Open Interest v/s Index price.',
           url:'https://stocksignal.github.io'
         }).then(() => {
           console.log('Thanks for sharing!');
@@ -28,8 +28,8 @@ function newssharing(e){
     if (navigator.share) {
         navigator.share({
           title: 'Newsfeed from Stock Signal',
-          url: e.target.value,
-          text: e.path[2].children[2].value +'\nGet buzzing financial news at : https://stocksignal.github.io'
+          url: e.path[2].children[2].value +'\n'+e.target.value,
+          text: '\nGet buzzing financial news at : https://stocksignal.github.io'
         }).then(() => {
           console.log('Thanks for sharing!');
         })
