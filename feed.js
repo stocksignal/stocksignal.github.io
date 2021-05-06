@@ -27,9 +27,9 @@ function newssharing(e){
   console.log(e.path[2].children[2].value);
     if (navigator.share) {
       let shareData = {
-        title: 'Newsfeed from Stock Signal',
-        url: '- Stock Signals',
-        text: e.path[2].children[2].value +' : '+e.target.value
+        title: 'Stock Signal',
+        url: e.target.value,
+        text: 'Newsfeed - '+e.path[2].children[2].value +' : '
       }
         navigator.share(shareData).then(() => {
           console.log('Thanks for sharing!');
