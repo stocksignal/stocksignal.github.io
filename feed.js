@@ -28,7 +28,7 @@ function newssharing(e){
     if (navigator.share) {
       let shareData = {
         title: 'Newsfeed from Stock Signal',
-        url: 'Get buzzing financial news at : https://stocksignal.github.io',
+        url: '- Stock Signals',
         text: e.path[2].children[2].value +' : '+e.target.value
       }
         navigator.share(shareData).then(() => {
