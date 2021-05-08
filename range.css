@@ -46,12 +46,13 @@ body {
 }
 
 .navbar {
-    z-index: 1;
+    z-index: 10;
     position: sticky;
     display: flex;
     flex-direction: column;
     top: 0;
     width: 100%;
+    box-shadow: 2px 2px 10px var(--boxshadow2);
     background-color: var(--bg-color);
 }
 
@@ -595,8 +596,6 @@ th {
 #pageshare {
     text-align: center;
     cursor: pointer;
-    margin-top: 20px;
-    margin-left: 20px;
     font-size: 12px;
     outline: none;
     border: 1px solid var(--primary-color);
@@ -605,15 +604,13 @@ th {
     color: var(--primary-color);
 }
 
-#pageshare:hover {
-    transform: scale(1.1);
+#pageshare:active {
+    transform: scale(0.95);
 }
 
 #pagerefresh {
     text-align: center;
     cursor: pointer;
-    margin-top: 20px;
-    margin-left: 20px;
     font-size: 12px;
     outline: none;
     border-radius: 4px;
@@ -622,27 +619,35 @@ th {
     color: var(--primary-color);
 }
 
-#pagerefresh:hover {
-    transform: scale(1.1);
+#pagerefresh:active {
+    transform: scale(0.95);
 }
 
 .footer {
+    width: 100vw;
+    height: 100px;
+    margin-top: 20px;
+    padding-top: 30px;
+    background-color: var(--boxshadow1);
+    border-radius: 300px 300px 0px 0px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 12px;
-    height: 20vh;
 }
 
 .footer a,
 .footer a:visited,
 .footer a:link {
+    cursor: pointer;
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--font);
 }
-.footer a:hover{
-    text-shadow: 2px 2px 2px red;
+
+.sanketh:hover{
+    text-shadow: 2px 2px 2px var(--primary-color);
 }
 
 @media only screen and (max-width: 768px) {
@@ -809,7 +814,7 @@ th {
         text-align: center;
     }
     .tabletitle {
-        margin: 20px auto;
+        margin: 20px 10px;
         font-size: 18px;
     }
     #oirows,
@@ -834,15 +839,21 @@ th {
         flex-direction: column;
         justify-content: center;
         width: 300px;
-        height: 180px;
+        height: 120px;
         padding: 10px;
         border-radius: 10px;
         box-shadow: -10px -10px 20px var(--boxshadow1), 10px 10px 20px var(--boxshadow2);
     }
+    .box1 h2{
+        font-size: 16px;
+    }
     .ads {
+        position: relative;
         display: flex;
+        justify-content: center;
+        align-items: flex-start;
         flex-direction: row;
-        width: 340px;
+        width: 320px;
         padding: 10px;
         margin: 30px 10px;
         border-radius: 10px;
@@ -862,8 +873,10 @@ th {
         font-size: 12px;
     }
     .ads-content em {
+        position: absolute;
         cursor: pointer;
-        margin-left: 60px;
+        right: 10px;
+        bottom: 5px;
         font-size: 12px;
         opacity: 0.6;
     }
@@ -890,7 +903,7 @@ th {
         /* Enable scroll if needed */
         background-color: rgb(0, 0, 0);
         /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.7);
         /* Black w/ opacity */
     }
     /* Modal Content/Box */
@@ -919,7 +932,7 @@ th {
     }
     .close:hover,
     .close:focus {
-        color: black;
+        color: rgb(87, 87, 87);
         text-decoration: none;
         cursor: pointer;
     }
@@ -927,7 +940,10 @@ th {
     .pe,
     .diff,
     .signal {
+        height: 30px;
         display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 12px;
     }
     .signal {
@@ -986,27 +1002,31 @@ th {
         opacity: 1;
     }
     #diffoi {
+        margin: 0;
         color: var(--primary-color);
     }
     #totalce {
+        margin: 0;
         color: var(--call);
     }
     #totalpe {
+        margin: 0;
         color: var(--put);
+    }
+    #oidata{
+        margin: 0;
     }
     h2 {
         margin: 10px;
     }
-    th,
-    td {
-        font-size: 16px;
-    }
     table,
     th,
     td {
+        width: fit-content;
+        padding: 5px;
+        font-size: 12px;
         border: solid 1px #444444;
         border-collapse: collapse;
-        padding: 4px 8px;
         text-align: center;
     }
     th {
@@ -1014,10 +1034,10 @@ th {
     }
     #newsfeed {
         overflow: scroll;
-        width: 360px;
+        min-width: 320px;
         height: 100vh;
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 10px;
     }
     #newsfeed::-webkit-scrollbar {
         display: none;
@@ -1032,8 +1052,8 @@ th {
         transition: 0.3s ease-in-out;
     }
     .newscard img {
-        width: 180px;
-        height: 100px;
+        width: 160px;
+        height: 80px;
         object-fit: cover;
     }
     .desc {
@@ -1052,7 +1072,7 @@ th {
         color: var(--primary-color);
     }
     .desc #description {
-        font-size: 12px;
+        font-size: 10px;
         color: var(--font-color);
     }
     #time {
@@ -1079,8 +1099,7 @@ th {
     #pageshare {
         text-align: center;
         cursor: pointer;
-        margin-top: 20px;
-        margin-left: 20px;
+        margin: 5px;
         font-size: 12px;
         outline: none;
         border: 1px solid var(--primary-color);
@@ -1088,14 +1107,13 @@ th {
         border-radius: 4px;
         color: var(--primary-color);
     }
-    #pageshare:hover {
-        transform: scale(1.1);
+    #pageshare:active {
+        transform: scale(0.95);
     }
     #pagerefresh {
         text-align: center;
         cursor: pointer;
-        margin-top: 20px;
-        margin-left: 20px;
+        margin: 5px;
         font-size: 12px;
         outline: none;
         border-radius: 4px;
@@ -1103,8 +1121,8 @@ th {
         border: 1px solid var(--primary-color);
         color: var(--primary-color);
     }
-    #pagerefresh:hover {
-        transform: scale(1.1);
+    #pagerefresh:active {
+        transform: scale(0.95);
     }
     .footer {
         text-align: center;

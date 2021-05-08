@@ -22,6 +22,7 @@ button:hover {
 }
 
 #details {
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,9 +31,8 @@ button:hover {
 
 .card {
     width: 320px;
-    height: 180px;
-    margin: 20px;
-    padding: 10px;
+    margin: 20px 0px;
+    padding: 0px;
     border-radius: 10px;
     box-shadow: -4px -4px 10px var(--boxshadow1), 4px 4px 10px var(--boxshadow2);
 }

@@ -40,6 +40,12 @@ function makechart(time,diffoi,price){
     var chartOptions = {
         maintainAspectRatio:
                 false,
+        elements: {
+            point: {
+                radius: 0,
+                hoverRadius: 2,
+            }
+        },
         scales: {
             xAxes: [{
                 barPercentage: 1,
@@ -78,7 +84,7 @@ function getoidata(){
                 arr.forEach(ar => {
                     price.push(ar.cmp);
                     let data = ar.niftyoi;
-                    time.push(ar.timestamp.slice(11,16));
+                    time.push(converttoist(ar.timestamp));
                     let ce = 0, pe = 0;
                     data.forEach(d => {
                         ce = ce + d.calls_change_oi;
