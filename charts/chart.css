@@ -14,14 +14,14 @@
     display: none;
     margin: 10px;
     position: relative; 
-    height:60vh; 
+    height: 350px; 
     width:50vw;
 }
 #pcrcontainer{
     display: none;
     margin: 10px;
     position: relative; 
-    height:60vh; 
+    height:350px; 
     width:50vw;
 }
 .somebtns{
@@ -37,13 +37,13 @@
         position: relative;
         margin: 10px;
         width: 90vw;
-        height: 40vh;
+        height: 300px;
     }
     #pcrcontainer{
         display:none;
         position: relative;
         margin: 10px;
         width: 90vw;
-        height: 40vh;
+        height: 300px;
     }
 }

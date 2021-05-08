@@ -1,7 +1,7 @@
 const strike = [];
 const calloi = [];
 const putoi = [];
-
+const myniftydata = [];
 function getindexvalue(option){
     const index = document.getElementById('index_value');
     
@@ -26,7 +26,7 @@ function runoi(option) {
     fetch(url)
         .then(res => res.json())
         .then((out) => {
-            var oidata = document.getElementById("oidata");
+            
             var totalce = document.getElementById("totalce");
             var totalpe = document.getElementById("totalpe");
             var diffoi = document.getElementById("diffoi");
@@ -91,18 +91,6 @@ function runoi(option) {
                         }
                     },
                 }
-            });
-
-
-            let oichain = out.data;
-            const table = document.getElementById('oirows');
-            table.innerText = '';
-            oichain.forEach(oi => {
-                var temp = `<tr>
-                <td>${oi.calls_change_oi}</td>
-                <td>${oi.strike_price}</td>
-                <td>${oi.puts_change_oi}</td></tr>`;
-                table.insertAdjacentHTML('beforeend', temp);
             });
         })
         .catch(err => { throw err });

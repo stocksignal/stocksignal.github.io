@@ -426,10 +426,11 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
 
 .fa-info-circle .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 200px;
     background-color: #555;
     color: #fff;
     text-align: center;
+    font-size: 14px;
     padding: 5px;
     border-radius: 6px;
     /* Position the tooltip text */
@@ -437,7 +438,7 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -105px;
     /* Fade in tooltip */
     opacity: 0;
     transition: opacity 0.3s;
@@ -488,6 +489,7 @@ td, th {
     border: 1px solid #555;
     padding: 8px;
     font-size: 16px;
+    font-weight: 700;
     width: 100px;
     text-align: center;
 }

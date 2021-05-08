@@ -6,8 +6,6 @@ function sharing(e){
           title: 'Stock Signal',
           text: 'Open Interest, FII/DII Data, NIFTY50 Advances/Declines, IPO Details and much more. Now you can check change in Open Interest v/s Index price.',
           url:'https://stocksignal.github.io'
-        }).then(() => {
-          console.log('Thanks for sharing!');
         })
         .catch(console.error);
       } else {
@@ -24,7 +22,6 @@ function sharing(e){
 }
 function newssharing(e){
   e.preventDefault();
-  console.log(e.path[2].children[2].value);
     if (navigator.share) {
       let shareData = {
         title: 'Stock Signal',
@@ -64,7 +61,7 @@ function handledata(out){
                         <button id="src" style="display:none;" value="${arr[i].source}"></button>
                         <p id="time">${temptime}<button id="share" value="${arr[i].url}" onclick="newssharing(event)">Share &#x21b7;</button></p>
                     </div>
-                    </div>`
+                    </div>`;
         newsfeed.insertAdjacentHTML('beforeend',temp);
     }
 }
@@ -77,4 +74,3 @@ const url = 'https://oidata-server.herokuapp.com/api/newsfeed';
             handledata(out);
         })
         .catch(err => { throw err });
-

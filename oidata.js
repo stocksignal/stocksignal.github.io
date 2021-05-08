@@ -1,3 +1,4 @@
+
 function getpricecolor(){
     var theme = localStorage.getItem('theme');
     if(theme == 'dark'){
@@ -86,7 +87,7 @@ function getoidata(){
                     diffoi.push(ce-pe);
                 });
                 makechart(time,diffoi,price);
-
+                populatetable(out);
             })
     } else if( index == 'bankniftyoichangedata'){
         let url = 'https://oidata-server.herokuapp.com/oidata/bankniftyoi';
@@ -118,3 +119,34 @@ getoidata();
 document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('click',()=>{
     getoidata();
 })
+
+function populatetable(out){
+    let arr = out.reverse();
+    let rows = document.getElementById('oirows');
+    rows.innerHTML='';
+    converttoist(arr[0].timestamp);
+    arr.forEach(e => {
+        let data = e.niftyoi;
+        let ce = 0;
+        let pe = 0;
+        
+        data.forEach(d => {
+            ce = ce + d.calls_change_oi;
+            pe = pe + d.puts_change_oi;
+        });
+        diff = ce-pe;
+
+        var temp = `<tr><td>${converttoist(e.timestamp)}</td>
+        <td>${ce}</td><td>${pe}</td>
+        ${diff<0? `<td style="color:var(--put);">${diff}</td>` : `<td style="color:var(--call);">${diff}</td>`}
+        ${diff<0? '<td style="color:var(--put);">SELL</td>' : '<td style="color:var(--call);">BUY</td>'}</tr>`;
+        rows.insertAdjacentHTML('beforeend',temp);
+        
+    });
+}
+
+function converttoist(mytime){
+    var myDate = new Date(mytime);
+    let strdate = myDate.getHours().toString() +" : "+ myDate.getMinutes().toString();
+    return(strdate);
+}
