@@ -597,6 +597,7 @@ th {
     text-align: center;
     cursor: pointer;
     font-size: 12px;
+    margin: 10px;
     outline: none;
     border: 1px solid var(--primary-color);
     background-color: var(--bg-color);
@@ -613,6 +614,7 @@ th {
     cursor: pointer;
     font-size: 12px;
     outline: none;
+    margin: 10px;
     border-radius: 4px;
     background-color: var(--bg-color);
     border: 1px solid var(--primary-color);
@@ -650,7 +652,7 @@ th {
     text-shadow: 2px 2px 2px var(--primary-color);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
     .navbar {
         z-index: 1;
         position: sticky;
@@ -810,16 +812,11 @@ th {
         justify-content: center;
         align-items: center;
         margin: 20px;
-        font-size: 14px;
         text-align: center;
     }
     .tabletitle {
         margin: 20px 10px;
-        font-size: 18px;
-    }
-    #oirows,
-    #oitable {
-        font-size: 10px;
+        font-size: 16px;
     }
     #index {
         width: 160px;
@@ -1024,7 +1021,8 @@ th {
     td {
         width: fit-content;
         padding: 5px;
-        font-size: 12px;
+        font-size: 10px;
+    
         border: solid 1px #444444;
         border-collapse: collapse;
         text-align: center;
@@ -1034,7 +1032,7 @@ th {
     }
     #newsfeed {
         overflow: scroll;
-        min-width: 320px;
+        min-width: 340px;
         height: 100vh;
         padding: 20px;
         margin-top: 10px;
@@ -1052,7 +1050,7 @@ th {
         transition: 0.3s ease-in-out;
     }
     .newscard img {
-        width: 160px;
+        width: 140px;
         height: 80px;
         object-fit: cover;
     }
@@ -1100,7 +1098,7 @@ th {
         text-align: center;
         cursor: pointer;
         margin: 5px;
-        font-size: 12px;
+        font-size: 10px;
         outline: none;
         border: 1px solid var(--primary-color);
         background-color: var(--bg-color);
@@ -1114,7 +1112,7 @@ th {
         text-align: center;
         cursor: pointer;
         margin: 5px;
-        font-size: 12px;
+        font-size: 10px;
         outline: none;
         border-radius: 4px;
         background-color: var(--bg-color);

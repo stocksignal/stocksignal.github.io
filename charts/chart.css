@@ -1,48 +1,53 @@
-#show,#hide{
+#show,#hide,#oichartshow{
     text-align: center;
     cursor: pointer;
     font-size: 12px;
-    margin: 5px;
+    margin: 10px;
     outline: none;
     border: 1px solid var(--primary-color);
     border-radius: 4px;
     background-color: var(--bg-color);
     color: var(--primary-color);
 }
-#ccontainer{
+#ccontainer,#pcrcontainer,#oichartcontainer{
     display: none;
     margin: 10px;
     position: relative; 
     height: 350px; 
     width:50vw;
 }
-#pcrcontainer{
-    display: none;
-    margin: 10px;
-    position: relative; 
-    height:350px; 
-    width:50vw;
+.chart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .somebtns{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-    #ccontainer{
+    #ccontainer,#pcrcontainer,#oichartcontainer{
         display: none;
         position: relative;
         margin: 10px;
         width: 90vw;
         height: 300px;
     }
-    #pcrcontainer{
-        display:none;
-        position: relative;
-        margin: 10px;
-        width: 90vw;
-        height: 300px;
+    .somebtns{
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    #show,#hide,#oichartshow{
+        font-size: 10px;
+        margin: 5px;
     }
 }

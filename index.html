@@ -119,7 +119,8 @@
                 <div class="chart">
                     <div class="somebtns">
                         <button id="show" onclick="showChart(event);">OI Chart</button>
-                        <button id="hide" onclick="hideChart(event);">OI v/s Index</button>
+                        <button id="hide" onclick="hideChart(event);">PCR v/s Index</button>
+                        <button id="oichartshow" onclick="showoiChart(event);">OI v/s Index</button>
                         <button id="pageshare"
                             value="Now you can check change in Open Interest v/s Index price here: https://stocksignal.github.io"
                             onclick="sharing(event);">
@@ -131,6 +132,9 @@
                     </div>
                     <div id="ccontainer">
                         <canvas id="myChart"></canvas>
+                    </div>
+                    <div id="oichartcontainer">
+                        <canvas id="oiChart"></canvas>
                     </div>
                     <div id="pcrcontainer">
                         <canvas id="pcrChart"></canvas>
@@ -178,6 +182,7 @@
                             <th>Puts</th>
                             <th>Difference</th>
                             <th>BUY/SELL</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody id="oirows">

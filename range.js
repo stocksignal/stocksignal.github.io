@@ -130,13 +130,13 @@ function runpcr() {
                 label: 'Index Price',
                 data: price,
                 backgroundColor: 'transparent',
-                borderColor: 'rgba(0, 99, 132, 0.6)',
+                borderColor: getpricecolor(),
                 yAxisID: "y-axis-price"
             };
 
             var planetData = {
                 labels: time,
-                datasets: [pcrData, priceData],
+                datasets: [priceData,pcrData],
                 responsive: true,
                 interaction: {
                     mode: 'index',
@@ -148,6 +148,11 @@ function runpcr() {
             var chartOptions = {
                 maintainAspectRatio:
                         false,
+                elements:{
+                    point:{
+                        radius: 0
+                    }
+                },
                 scales: {
                     xAxes: [{
                         barPercentage: 1,
@@ -163,7 +168,7 @@ function runpcr() {
                 }
             };
 
-            var barChart = new Chart(pcrctx, {
+            new Chart(pcrctx, {
                 type: 'line',
                 data: planetData,
                 options: chartOptions
@@ -195,11 +200,12 @@ if (!option) {
 }
 document.getElementById('index').value = option;
 runoi(option);
-// runpcr();
+runpcr();
 
 function showChart() {
     localStorage.setItem('chart', 'oi');
     document.getElementById('pcrcontainer').style.display = 'none';
+    document.getElementById('oichartcontainer').style.display = 'none';
     document.getElementById('ccontainer').style.display = 'block';
 
 }
@@ -207,7 +213,15 @@ function showChart() {
 function hideChart() {
     localStorage.setItem('chart', 'pcr');
     document.getElementById('ccontainer').style.display = 'none';
+    document.getElementById('oichartcontainer').style.display = 'none';
     document.getElementById('pcrcontainer').style.display = 'block';
+}
+
+function showoiChart() {
+    localStorage.setItem('chart', 'oiindex');
+    document.getElementById('ccontainer').style.display = 'none';
+    document.getElementById('pcrcontainer').style.display = 'none';
+    document.getElementById('oichartcontainer').style.display = 'block';
 }
 
 //navbar open-close
@@ -250,4 +264,7 @@ if(!chartx){
 }
 else if( chartx == 'pcr'){
     hideChart();
+}
+else if( chartx == 'oiindex'){
+    showoiChart();
 }
