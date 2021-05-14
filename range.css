@@ -148,6 +148,7 @@ hr {
     border: none;
     border-top: 0.1rem solid var(--hr);
 }
+
 /*--dark mode slider--*/
 
 .theme-switch-wrapper {
@@ -257,7 +258,7 @@ input:checked+.slider:before {
 
 #oirows,
 #oitable {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 #index {
@@ -400,7 +401,7 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .signal {
@@ -414,6 +415,7 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     font-size: 20px;
     color: var(--font-color);
 }
+
 /* Tooltip container */
 
 .fa-info-circle {
@@ -571,7 +573,7 @@ th {
 
 #time {
     margin-top: -10px;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--time);
 }
 
@@ -579,7 +581,7 @@ th {
     cursor: pointer;
     padding: 4px;
     margin-left: 10px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     outline: none;
     border: 1px solid var(--primary-color);
@@ -1021,7 +1023,7 @@ th {
     td {
         width: fit-content;
         padding: 5px;
-        font-size: 10px;
+        font-size: 12px;
     
         border: solid 1px #444444;
         border-collapse: collapse;
@@ -1070,19 +1072,19 @@ th {
         color: var(--primary-color);
     }
     .desc #description {
-        font-size: 10px;
+        font-size: 12px;
         color: var(--font-color);
     }
     #time {
         margin-top: -10px;
-        font-size: 10px;
+        font-size: 12px;
         color: var(--time);
     }
     #share {
         cursor: pointer;
         padding: 4px;
         margin-left: 10px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
         outline: none;
         border: 1px solid var(--primary-color);
@@ -1098,7 +1100,7 @@ th {
         text-align: center;
         cursor: pointer;
         margin: 5px;
-        font-size: 10px;
+        font-size: 12px;
         outline: none;
         border: 1px solid var(--primary-color);
         background-color: var(--bg-color);
@@ -1112,7 +1114,7 @@ th {
         text-align: center;
         cursor: pointer;
         margin: 5px;
-        font-size: 10px;
+        font-size: 12px;
         outline: none;
         border-radius: 4px;
         background-color: var(--bg-color);
