@@ -54,12 +54,12 @@ function handledata(out){
         let time = arr[i].publishDate;
         let temptime = '&#8986; '+time.slice(11,16)+' ['+time.slice(0,10)+']';
         let temp = `<div class="newscard">
-                        <img src="${arr[i].imageUrl}">
+                        <img src="${arr[i].imageUrl}" alt="Newsfeed - StockSignal">
                     <div class="desc">
-                        <a href="${arr[i].url}" target="_blank">${arr[i].title}</a>
+                        <a href="${arr[i].url}" target="_blank" rel="noopener noreferrer">${arr[i].title}</a>
                         <p id="description">${tempdesc}</p>
-                        <button id="src" style="display:none;" value="${arr[i].source}"></button>
-                        <p id="time">${temptime}<button id="share" value="${arr[i].url}" onclick="newssharing(event)">Share &#x21b7;</button></p>
+                        <button style="display:none;" value="${arr[i].source}"></button>
+                        <p id="time">${temptime}<button class="share" value="${arr[i].url}" onclick="newssharing(event)">Share &#x21b7;</button></p>
                     </div>
                     </div>`;
         newsfeed.insertAdjacentHTML('beforeend',temp);

@@ -24,9 +24,9 @@
     <META NAME="geo.placename" CONTENT="Mumbai">
     <META NAME="geo.region" CONTENT="IN-MH">
     <meta http-equiv="content-language" content="en-in" />
+    <link rel="manifest" href="manifest.json">
     <link rel="alternate" hreflang="en" href="https://www.stocksignal.github.io/">
-    <link rel="canonical" href="https://stocksignal.github.io/range.html" />
-    <link rel="alternate" hreflang="en-in" href="https://stocksignal.github.io/ipo/ipodetails.html" />
+    <link rel="canonical" href="https://stocksignal.github.io/" />
     <link rel="icon" type="image/png" href="/charts/stocksignals.jpeg" sizes="32x32">
     <link rel="icon" type="image/png" href="/charts/stocksignals.jpeg" sizes="16x16">
 
@@ -134,14 +134,13 @@
                         <img src="/charts/stocksignals.jpeg" alt="Stock Signals">
                     </a>
                     <div class="ads-content">
-                        <h4>Stock Signals</h4>
+                        <h3>Stock Signals</h3>
                         <p>Get free financial advice from experts. Checkout our Youtube channel for analysis and
-                            reports.
-                        </p>
-                        <a href="https://instagram.com/stock_signals__" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram"
-                                aria-hidden="true"></i></a>
-                        <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank" rel="noopener noreferrer"><i
-                                class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            reports.</p>
+                        <a href="https://instagram.com/stock_signals__" target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         <em id="placead">place ads</em>
                     </div>
 
@@ -153,7 +152,7 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>To place your ad here, send the details to this <a href="mailto:noobtrader81@gmail.com">Mail</a>
+                    <p>To place your ad here, send the details to this <a href="mailto:noobtrader81@gmail.com" rel="noopener noreferrer">Mail</a>
                     </p>
                 </div>
 
@@ -190,13 +189,18 @@
         <p><a href="/docs/privacy-policy.html">Privacy</a> / <a href="/docs/terms-and-conditions.html">Terms &
                 Conditions</a> / <a href="/docs/disclaimer.html">Disclaimer</a> / <a href="../sitemap.xml">Sitemap</a></p>
         <p>Stock Signal 2021. All Rights Reserved.<br>Design by <a class="sanketh" href="https://sankethsj.github.io"
-                target="_blank">Sanketh Jain &#128081;</a></p>
+                target="_blank" rel="noopener noreferrer">Sanketh Jain &#128081;</a></p>
     </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<script src="/charts/chart.js"></script>
 <script src="/range.js"></script>
 <script src="/charts/darkMode.js"></script>
 <script src="/feed.js"></script>
