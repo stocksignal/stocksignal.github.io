@@ -2,7 +2,7 @@
   "name": "Stock Signal",
   "short_name": "Stock Signal",
   "start_url": "/?home=true",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "theme_color":"#000000",
   "background_color": "#ffffff",
