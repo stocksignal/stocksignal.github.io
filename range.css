@@ -1,7 +1,7 @@
 :root {
-    --primary-color: blue;
+    --primary-color: rgb(52, 67, 188);
     --secondary-color: black;
-    --font-color: black;
+    --font-color: rgb(64, 78, 77);
     --bg-color: rgb(219, 219, 219);
     --heading-color: #292922;
     --boxshadow1: #fdfdfd;
@@ -16,7 +16,7 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: yellow;
+    --primary-color: rgb(164, 190, 243);
     --secondary-color: white;
     --font-color: #f5f5f5;
     --bg-color: rgb(31, 31, 31);
@@ -25,8 +25,8 @@
     --boxshadow2: #000000;
     --lg1: rgba(15, 15, 15, 0);
     --lg2: rgba(15, 15, 15, 1);
-    --call: rgb(82, 255, 82);
-    --put: rgb(255, 82, 82);
+    --call: rgb(155, 197, 61);
+    --put: rgb(195, 66, 63);
     --hr: rgb(0, 0, 0);
     --th: #111111;
 }

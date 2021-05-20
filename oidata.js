@@ -2,9 +2,9 @@
 function getpricecolor(){
     var theme = localStorage.getItem('theme');
     if(theme == 'dark'){
-        return 'rgb(255,255,0)'
+        return 'rgb(164, 190, 243)'
     } else{
-        return 'rgb(0,0,255)'
+        return 'rgb(52, 67, 188)'
     }
 }
 function makechart(time,tce,tpe,price){
@@ -24,16 +24,18 @@ function makechart(time,tce,tpe,price){
         label: 'Total CE',
         data: tce,
         backgroundColor: 'transparent',
-        borderColor: 'rgb(43,135,65)',
-        yAxisID: "y-axis-price"
+        borderColor: 'rgba(43,135,65,0.7)',
+        yAxisID: "y-axis-price",
+        borderDash: [5, 5]
     };
     var putoidata = {
         type: 'line',
         label: 'Total PE',
         data: tpe,
         backgroundColor: 'transparent',
-        borderColor: 'rgb(135,35,35)',
-        yAxisID: "y-axis-price"
+        borderColor: 'rgba(135,35,35,0.7)',
+        yAxisID: "y-axis-price",
+        borderDash: [5, 5]
     };
 
     var oichartdata = {
