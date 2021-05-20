@@ -286,7 +286,9 @@ box-shadow: -2px -2px 10px var(--boxshadow2), 2px 2px 10px var(--boxshadow2);
     border-radius: 10px;
     box-shadow: -10px -10px 20px var(--boxshadow1), 10px 10px 20px var(--boxshadow2);
 }
-
+.box1 h2{
+    font-size: 1rem;
+}
 .ads {
     cursor: default;
     display: flex;
