@@ -73,12 +73,12 @@ function runoi(option) {
                         label: 'Change in Call OI',
                         data: calloi,
                         borderWidth: 1,
-                        backgroundColor: "rgb(155, 197, 61)",
+                        backgroundColor: "rgb(33, 173, 20)",
                     },
                     {
                         label: 'Change in Put OI',
                         data: putoi,
-                        backgroundColor: "rgb(195, 66, 63)",
+                        backgroundColor: "rgb(224, 36, 33)",
                         borderWidth: 1
                     }]
                 },
