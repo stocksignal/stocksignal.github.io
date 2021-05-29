@@ -302,10 +302,10 @@ box-shadow: -2px -2px 10px var(--boxshadow2), 2px 2px 10px var(--boxshadow2);
     margin: 30px 10px;
     border-radius: 10px;
     box-shadow: -10px -10px 20px var(--boxshadow1), 10px 10px 20px var(--boxshadow2);
-    transition: box-shadow 0.33s ease-in-out; 
+    transition: all 0.4s ease-in-out; 
 }
-.ads:active{
-box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--boxshadow2);
+.ads:hover{
+    transform: rotate(-2deg);
 }
 .ads img {
     width: 240px;
@@ -343,6 +343,10 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     color: var(--primary-color);
     font-size: 40px;
     margin: 0 10px;
+    transition: all 0.2s ease-in-out;
+}
+.ads-content i:hover{
+    transform: rotate(360deg);
 }
 /* The Modal (background) */
 .sometext{
