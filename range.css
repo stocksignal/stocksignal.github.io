@@ -295,7 +295,7 @@ box-shadow: -2px -2px 10px var(--boxshadow2), 2px 2px 10px var(--boxshadow2);
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 80%;
     height: 250px;
     padding: 10px;
@@ -317,10 +317,12 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
     margin-top: -20px;
     margin-left: 10px;
 }
-
+.ads-content h3{
+    font-size: 2rem;
+}
 .ads-content p {
     margin-top: -20px;
-    font-size: 12px;
+    font-size: 1rem;
 }
 #placead{
     position: absolute;
@@ -339,7 +341,7 @@ box-shadow: inset -5px -5px 20px var(--boxshadow1), inset 5px 5px 20px var(--box
 
 .ads-content i {
     color: var(--primary-color);
-    font-size: 26px;
+    font-size: 40px;
     margin: 0 10px;
 }
 /* The Modal (background) */
@@ -881,8 +883,11 @@ th {
         margin-top: -20px;
         margin-left: 10px;
     }
+    .ads-content h3{
+        font-size: 1rem;
+    }
     .ads-content p {
-        margin-top: -20px;
+        margin-top: -10px;
         font-size: 12px;
     }
     .ads-content em {
