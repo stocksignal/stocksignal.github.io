@@ -268,3 +268,17 @@ else if( chartx == 'pcr'){
 else if( chartx == 'oiindex'){
     showoiChart();
 }
+
+var loginpage = document.querySelector('.login-page');
+var loginbtn = document.getElementById('login-btn');
+var closelogin = document.querySelector('.close-login');
+loginbtn.addEventListener('click', ()=>{
+        loginpage.style.display = 'flex';
+});
+
+loginpage.addEventListener('touchmove', (e)=>{
+    e.preventDefault();
+}, false);
+closelogin.addEventListener('click', ()=> {
+    loginpage.style.display = 'none';
+})

@@ -44,6 +44,7 @@
             <div class="head" onclick="window.location='/'">Stock <span>Signal</span>
             </div>
             <div class="sidebar">
+                <button id="login-btn">Login</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
@@ -69,7 +70,30 @@
         </div>
         <hr>
     </div>
-    <div class="btns">
+
+    <div class="login-page">
+        <div class="login-container">
+            <div class="loginheader">
+                <div class="logintitle">Login to Stock Signal</div>
+                <div class="close-login">&#10006;</div>
+            </div>
+            <div class="login-form">
+                <form class="login-form" onsubmit="loginfire(event)">
+                    <input type="tel" id="phone" name="phone" autocomplete="off" placeholder="Enter your mobile No." pattern="[0-9]{10}">
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                    <div class="tandc">
+                        <input type="checkbox" name="tandc" id="tandc" required>
+                        <label for="tandc" id="tandclabel">I've read and agree to the Terms and Conditions</label>
+                    </div>
+                    <input type="submit" id="login-submit" value="Login">
+                </form>
+            </div>
+            <form class="otp-form" onsubmit="onotpsubmit(event)">
+                <h3 id="otp-text"></h3>
+                <input type="text" id="otp" name="otp" placeholder="Enter OTP" pattern="[0-9]{6}" required>
+                <input type="submit" id="otp-submit" value="Submit OTP">
+            </form>
+        </div>
 
     </div>
 
@@ -136,7 +160,8 @@
                     </a>
                     <div class="ads-content">
                         <h3>Stock Signals</h3>
-                        <p>Join the Stock Signal telegram channel for daily views on BANKNIFTY and NIFTY derivatives. Checkout Youtube channel for trade analysis.</p>
+                        <p>Join the Stock Signal telegram channel for daily views on BANKNIFTY and NIFTY derivatives.
+                            Checkout Youtube channel for trade analysis.</p>
                         <a href="https://t.me/stocksignalss" target="_blank" rel="noopener noreferrer">
                             <i class="fa fa-telegram" aria-hidden="true"></i></a>
                         <a href="https://instagram.com/stocksignals_" target="_blank" rel="noopener noreferrer">
@@ -149,7 +174,7 @@
 
                 </div>
             </div>
-            
+
             <!-- The Modal -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -195,12 +220,12 @@
         <p>Stock Signal 2021. All Rights Reserved.</p>
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<script src="/range.js"></script>
-<script src="/charts/darkMode.js"></script>
-<script src="/feed.js"></script>
-<script src="/oidata.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="/range.js"></script>
+    <script src="/charts/darkMode.js"></script>
+    <script src="/feed.js"></script>
+    <script src="/oidata.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');
@@ -214,23 +239,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
-<script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-        apiKey: "AIzaSyA6hJIywPAnSseehaBbng0abCxWFlLV_fw",
-        authDomain: "stock-signal-app.firebaseapp.com",
-        projectId: "stock-signal-app",
-        storageBucket: "stock-signal-app.appspot.com",
-        messagingSenderId: "638964824703",
-        appId: "1:638964824703:web:02d9bfb0e18099be841d4a",
-        measurementId: "G-WRNVEXM6ZP"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-</script>
+<script src="/firebasePhone.js"></script>
 
 </html>
