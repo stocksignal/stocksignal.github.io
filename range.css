@@ -220,7 +220,7 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder {
     color: var(--boxshadow1);
 }
-#phone, #password, #login-submit, #otp{
+#phone, #login-submit, #otp{
     margin: 10px;
     padding: 5px;
     width: 80%;
@@ -241,13 +241,18 @@ input:focus::-webkit-input-placeholder {
     cursor: pointer;
     outline: none;
     border: none;
+    font-size: 1.2rem;
     border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--bg-color);
     width: 60%;
     height: 3rem;
 }
-
+.logindialog1, .logindialog2, .logindialog3{
+    display: none;
+    font-size: 1.2rem;
+    font-style: italic;
+}
 /*--dark mode slider--*/
 .theme-switch-wrapper {
     display: flex;

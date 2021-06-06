@@ -8,6 +8,11 @@
     border-radius: 4px;
     background-color: var(--bg-color);
     color: var(--primary-color);
+    transition: all 0.1s ease-in-out;
+}
+#show:active, #hide:active, #oichartshow:active{
+    background-color: var(--primary-color);
+    color: var(--bg-color);
 }
 #ccontainer,#pcrcontainer,#oichartcontainer{
     display: none;

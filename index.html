@@ -78,14 +78,13 @@
                 <div class="close-login">&#10006;</div>
             </div>
             <div class="login-form">
-                <form class="login-form" onsubmit="loginfire(event)">
-                    <input type="tel" id="phone" name="phone" autocomplete="off" placeholder="Enter your mobile No." pattern="[0-9]{10}">
-                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                <form class="login-form" onsubmit="onSignInSubmit(event)">
+                    <input type="tel" id="phone" name="phone" autocomplete="off" placeholder="Enter your 10 digit mobile No." pattern="[0-9]{10}">
                     <div class="tandc">
                         <input type="checkbox" name="tandc" id="tandc" required>
                         <label for="tandc" id="tandclabel">I've read and agree to the Terms and Conditions</label>
                     </div>
-                    <input type="submit" id="login-submit" value="Login">
+                    <input type="submit" id="login-submit" value="Send OTP">
                 </form>
             </div>
             <form class="otp-form" onsubmit="onotpsubmit(event)">
@@ -146,9 +145,11 @@
                         <canvas id="myChart"></canvas>
                     </div>
                     <div id="oichartcontainer">
+                        <div class="logindialog1">Please login to access this feature.</div>
                         <canvas id="oiChart"></canvas>
                     </div>
                     <div id="pcrcontainer">
+                        <div class="logindialog2">Please login to access this feature.</div>
                         <canvas id="pcrChart"></canvas>
                     </div>
                 </div>
@@ -187,7 +188,7 @@
 
             <div id="oidata">
                 <div class="tabletitle">Open Interest Data (Strikes near to ATM only)</div>
-
+                <div class="logindialog3">Please login to access this feature.</div>
                 <table id="oitable">
                     <thead>
                         <tr>
@@ -226,6 +227,27 @@
     <script src="/charts/darkMode.js"></script>
     <script src="/feed.js"></script>
     <script src="/oidata.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyA6hJIywPAnSseehaBbng0abCxWFlLV_fw",
+        authDomain: "stock-signal-app.firebaseapp.com",
+        projectId: "stock-signal-app",
+        storageBucket: "stock-signal-app.appspot.com",
+        messagingSenderId: "638964824703",
+        appId: "1:638964824703:web:02d9bfb0e18099be841d4a",
+        measurementId: "G-WRNVEXM6ZP"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');
@@ -234,14 +256,6 @@
 
 </body>
 
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use
- https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
 <script src="/firebasePhone.js"></script>
 
 </html>
