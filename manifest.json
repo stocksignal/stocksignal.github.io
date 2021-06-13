@@ -6,28 +6,28 @@
   "orientation": "portrait",
   "theme_color":"#000000",
   "background_color": "#1f1f1f",
-  "description": "Stock Signal is a place for index derivatives traders to get more insights into open interest data.",
+  "description": "Stock Signal is a tool for index derivatives traders to get more insights into open interest data.",
   "icons": [
     {
-      "src": "/charts/icons/manifest-icon-512.png",
+      "src": "/charts/icon/manifest-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/charts/icons/manifest-icon-192.png",
+      "src": "/charts/icon/manifest-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-        "src": "/charts/icons/manifest-icon-192.png",
+        "src": "/charts/icon/manifest-icon-192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
     },
     {
-      "src": "/charts/icons/manifest-icon-512.png",
+      "src": "/charts/icon/manifest-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
