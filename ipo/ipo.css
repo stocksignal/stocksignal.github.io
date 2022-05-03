@@ -32,7 +32,7 @@ button:hover {
 .card {
     width: 320px;
     margin: 20px 0px;
-    padding: 0px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: -4px -4px 10px var(--boxshadow1), 4px 4px 10px var(--boxshadow2);
 }
