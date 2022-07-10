@@ -7,6 +7,7 @@ function getpricecolor(){
         return 'rgb(52, 67, 188)'
     }
 }
+
 function makechart(time,tce,tpe,price){
     let oichart = document.getElementById('oiChart');
     

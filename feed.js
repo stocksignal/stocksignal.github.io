@@ -46,18 +46,16 @@ function newssharing(e){
 }
 
 function handledata(out){
+    console.log(out)
     let arr = out;
     const newsfeed = document.getElementById('newsfeed');
     for(let i=0; i< 10; i++) {
-        let description = arr[i].description;
-        let tempdesc = description.slice(0,100)+'...';
         let time = arr[i].publishDate;
         let temptime = '&#8986; '+time.slice(11,16)+' ['+time.slice(0,10)+']';
         let temp = `<div class="newscard">
                         <img src="${arr[i].imageUrl}" alt="Newsfeed - StockSignal">
                     <div class="desc">
                         <a href="${arr[i].url}" target="_blank" rel="noopener noreferrer">${arr[i].title}</a>
-                        <p id="description">${tempdesc}</p>
                         <button style="display:none;" value="${arr[i].source}"></button>
                         <p id="time">${temptime}<button class="share" value="${arr[i].url}" onclick="newssharing(event)">Share &#x21b7;</button></p>
                     </div>

@@ -408,7 +408,7 @@ box-shadow: -2px -2px 10px var(--boxshadow2), 2px 2px 10px var(--boxshadow2);
     transition: all 0.4s ease-in-out; 
 }
 .ads:hover{
-    transform: rotate(-2deg);
+    transform: scale(1.01);
 }
 .ads img {
     width: 240px;
@@ -685,7 +685,7 @@ th {
 }
 
 #time {
-    margin-top: -10px;
+    margin-top: 0px;
     font-size: 12px;
     color: var(--time);
 }
@@ -1209,7 +1209,7 @@ th {
         color: var(--font-color);
     }
     #time {
-        margin-top: -10px;
+        margin-top: 0px;
         font-size: 12px;
         color: var(--time);
     }
