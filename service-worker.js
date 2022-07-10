@@ -9,8 +9,7 @@ workbox.routing.registerRoute(
 
 
 workbox.routing.registerRoute(
-  ({request}) => request.destination === 'script' ||
-                  request.destination === 'style',
+  ({request}) => request.destination === 'style',
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'static-resources',
   })
