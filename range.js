@@ -103,7 +103,7 @@ function runpcr() {
     const pcr = [];
     const price = [];
 
-    fetch('https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType='+option+'pcr')
+    fetch(`https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType=+${option}+pcr`)
         .then((res) => res.json())
         .then((out) => {
             let arr = out.resultData.data;
