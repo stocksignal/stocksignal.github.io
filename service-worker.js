@@ -20,12 +20,4 @@ workbox.routing.registerRoute(
     new workbox.strategies.CacheFirst({
       cacheName: 'images',
     })
-  );
-
-  workbox.routing.registerRoute(
-  new RegExp('(https://api.niftytrader.in|https://oidata-server)*'),
-  new workbox.strategies.NetworkFirst({
-    networkTimeoutSeconds: 3,
-    cacheName: 'data',
-  })
 );

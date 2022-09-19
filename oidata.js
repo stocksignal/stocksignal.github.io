@@ -82,9 +82,8 @@ function makechart(time,tce,tpe,price){
         data: oichartdata,
         options: chartOptions
     });
-
-   
 }
+
 function getoidata(){
     var index = localStorage.getItem('index');
     if (index == 'niftyoichangedata'){
@@ -145,6 +144,7 @@ function getoidata(){
             });
     }
 }
+
 getoidata();
 
 document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('click',()=>{

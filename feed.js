@@ -46,7 +46,6 @@ function newssharing(e){
 }
 
 function handledata(out){
-    console.log(out)
     let arr = out;
     const newsfeed = document.getElementById('newsfeed');
     for(let i=0; i< 10; i++) {

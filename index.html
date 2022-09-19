@@ -44,7 +44,6 @@
             <div class="head" onclick="window.location='/'">Stock <span>Signal</span>
             </div>
             <div class="sidebar">
-                <button id="login-btn">Login</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
@@ -71,124 +70,69 @@
         <hr>
     </div>
 
-    <div class="login-page">
-        <div class="login-container">
-            <div class="loginheader">
-                <div class="logintitle">Login to Stock Signal</div>
-                <div class="close-login">&#10006;</div>
-            </div>
-            <div class="login-form">
-                <form class="login-form" onsubmit="onSignInSubmit(event)">
-                    <input type="tel" id="phone" name="phone" autocomplete="off" placeholder="Enter your 10 digit mobile No." pattern="[0-9]{10}">
-                    <div class="tandc">
-                        <input type="checkbox" name="tandc" id="tandc" required>
-                        <label for="tandc" id="tandclabel">I've read and agree to the Terms and Conditions</label>
-                    </div>
-                    <input type="submit" id="login-submit" value="Send OTP">
-                </form>
-            </div>
-            <form class="otp-form" onsubmit="onotpsubmit(event)">
-                <h3 id="otp-text"></h3>
-                <input type="text" id="otp" name="otp" placeholder="Enter OTP" pattern="[0-9]{6}" required>
-                <input type="submit" id="otp-submit" value="Submit OTP">
-            </form>
-        </div>
+    <div class="main-container">
 
-    </div>
+        <div class="api-container">
 
-    <div class="api-container">
-
-        <div class="option-chain">
-            <div class="container">
-                <div class="index_header">
-                    <select name="index" id="index" onchange="changeoi(this);getoidata();">
-                        <option value="niftyoichangedata" selected>NIFTY</option>
-                        <option value="bankniftyoichangedata">BANKNIFTY</option>
-                    </select>
-                    <div class="index_value" id="index_value">Loading...</div>
-                </div>
-                <div class="box1">
-                    <div class="ce">
-                        <h2>Total Call OI: </h2>
-                        <h2 id="totalce">Loading...</h2>
+            <div class="option-chain">
+                <div class="container">
+                    <div class="index_header">
+                        <select name="index" id="index" onchange="changeoi(this);getoidata();">
+                            <option value="niftyoichangedata" selected>NIFTY</option>
+                            <option value="bankniftyoichangedata">BANKNIFTY</option>
+                        </select>
+                        <div class="index_value" id="index_value">Loading...</div>
                     </div>
-                    <div class="pe">
-                        <h2>Total Put OI: </h2>
-                        <h2 id="totalpe">Loading...</h2>
-                    </div>
-                    <div class="diff">
-                        <h2>Difference OI: </h2>
-                        <h2 id="diffoi">Loading...</h2>
-                    </div>
-                    <div class="signal">
-                        <h2 id="signal">No signal</h2>
-                        <i class="fa fa-info-circle" aria-hidden="true"><span class="tooltiptext">Do not use this to
-                                make investment decisions.</span></i>
-                    </div>
-                </div>
-
-                <div class="chart">
-                    <div class="somebtns">
-                        <button id="show" onclick="showChart(event);">OI Chart</button>
-                        <button id="hide" onclick="hideChart(event);">PCR v/s Index</button>
-                        <button id="oichartshow" onclick="showoiChart(event);">OI v/s Index</button>
-                        <button id="pageshare"
-                            value="Now you can check change in Open Interest v/s Index price here: https://stocksignal.github.io"
-                            onclick="sharing(event);">
-                            Share page
-                        </button>
-                        <button id="pagerefresh" onclick="window.location.reload();">
-                            Refresh &#8635;
-                        </button>
-                    </div>
-                    <div id="ccontainer">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <div id="oichartcontainer">
-                        <div class="logindialog1">Please login to access this feature.</div>
-                        <canvas id="oiChart"></canvas>
-                    </div>
-                    <div id="pcrcontainer">
-                        <div class="logindialog2">Please login to access this feature.</div>
-                        <canvas id="pcrChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="ads">
-                    <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="/charts/stocksignals.png" alt="Stock Signals">
-                    </a>
-                    <div class="ads-content">
-                        <h3>Stock Signals</h3>
-                        <p>Join the Stock Signal telegram channel for daily views on BANKNIFTY and NIFTY derivatives.
-                            Checkout Youtube channel for trade analysis.</p>
-                        <a href="https://t.me/stocksignalss" target="_blank" rel="noopener noreferrer">
-                            <i class="fa fa-telegram" aria-hidden="true"></i></a>
-                        <a href="https://instagram.com/stocksignals_" target="_blank" rel="noopener noreferrer">
-                            <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://youtube.com/channel/UCbQwsiK-hb5CYMAHQL8NP6g" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                        <em id="placead">place ads</em>
+                    <div class="box1">
+                        <div class="ce">
+                            <h2>Total Call OI: </h2>
+                            <h2 id="totalce">Loading...</h2>
+                        </div>
+                        <div class="pe">
+                            <h2>Total Put OI: </h2>
+                            <h2 id="totalpe">Loading...</h2>
+                        </div>
+                        <div class="diff">
+                            <h2>Difference OI: </h2>
+                            <h2 id="diffoi">Loading...</h2>
+                        </div>
+                        <div class="signal">
+                            <h2 id="signal">No signal</h2>
+                            <i class="fa fa-info-circle" aria-hidden="true"><span class="tooltiptext">Do not use this to
+                                    make investment decisions.</span></i>
+                        </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="chart">
+                        <div class="somebtns">
+                            <button id="show" onclick="showChart(event);">OI Chart</button>
+                            <button id="hide" onclick="hideChart(event);">PCR v/s Index</button>
+                            <button id="oichartshow" onclick="showoiChart(event);">OI v/s Index</button>
+                            <button id="pageshare"
+                                value="Now you can check change in Open Interest v/s Index price here: https://stocksignal.github.io"
+                                onclick="sharing(event);">
+                                Share page
+                            </button>
+                            <button id="pagerefresh" onclick="window.location.reload();">
+                                Refresh &#8635;
+                            </button>
+                        </div>
+                        <div id="ccontainer">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <div id="oichartcontainer">
+                            <canvas id="oiChart"></canvas>
+                        </div>
+                        <div id="pcrcontainer">
+                            <canvas id="pcrChart"></canvas>
+                        </div>
+                    </div>
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>For advertisemets, contact this <a href="mailto:noobtrader81@gmail.com"
-                            rel="noopener noreferrer">Mail</a>
-                    </p>
                 </div>
             </div>
 
             <div id="oidata">
                 <div class="tabletitle">Open Interest Data (Strikes near to ATM only)</div>
-                <div class="logindialog3">Please login to access this feature.</div>
                 <table id="oitable">
                     <thead>
                         <tr>
@@ -207,10 +151,15 @@
         </div>
 
         <hr>
+
         <div class="news">
             <h1 style="text-align: center;">Newsfeed 📰</h1>
             <div id="newsfeed"></div>
         </div>
+        
+    </div>
+
+
     </div>
 
 
@@ -227,27 +176,6 @@
     <script src="/charts/darkMode.js"></script>
     <script src="/feed.js"></script>
     <script src="/oidata.js"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyA6hJIywPAnSseehaBbng0abCxWFlLV_fw",
-        authDomain: "stock-signal-app.firebaseapp.com",
-        projectId: "stock-signal-app",
-        storageBucket: "stock-signal-app.appspot.com",
-        messagingSenderId: "638964824703",
-        appId: "1:638964824703:web:02d9bfb0e18099be841d4a",
-        measurementId: "G-WRNVEXM6ZP"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    </script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');
@@ -255,7 +183,5 @@
     </script>
 
 </body>
-
-<script src="/firebasePhone.js"></script>
 
 </html>

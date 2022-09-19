@@ -239,17 +239,7 @@ close.addEventListener('click', () => {
     menu.style.display = 'block';
 })
 
-// Get the modal
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("placead");
-var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
-span.onclick = function () {
-    modal.style.display = "none";
-}
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -268,17 +258,3 @@ else if( chartx == 'pcr'){
 else if( chartx == 'oiindex'){
     showoiChart();
 }
-
-var loginpage = document.querySelector('.login-page');
-var loginbtn = document.getElementById('login-btn');
-var closelogin = document.querySelector('.close-login');
-loginbtn.addEventListener('click', ()=>{
-        loginpage.style.display = 'flex';
-});
-
-loginpage.addEventListener('touchmove', (e)=>{
-    e.preventDefault();
-}, false);
-closelogin.addEventListener('click', ()=> {
-    loginpage.style.display = 'none';
-})
