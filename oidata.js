@@ -98,7 +98,8 @@ function getoidata(){
                 let tpe = [];
                 
                 for(let i=0; i<arr.length; i++){
-                    if(i%3==0){
+                    // if(i%3==0){
+                    if(true){
                         price.push(arr[i].cmp);
                         let data = arr[i].niftyoi;
                         time.push(converttoist(arr[i].timestamp));
@@ -126,7 +127,8 @@ function getoidata(){
                 let tpe = [];
                 
                 for(let i=0; i<arr.length; i++){
-                    if(i%3==0){
+                    // if(i%3==0){/
+                    if(true){
                         price.push(arr[i].cmp);
                         let data = arr[i].bankniftyoi;
                         time.push(converttoist(arr[i].timestamp));
@@ -154,7 +156,8 @@ document.querySelector('.theme-switch input[type="checkbox"]').addEventListener(
 function populatetable(out){
     let arr = [];
     for(let i=0; i<out.length; i++){
-        if(i%3==0){
+        // if(i%3==0){
+        if(true){
             arr.push(out[i]);
         }
     }

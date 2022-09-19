@@ -239,12 +239,6 @@ close.addEventListener('click', () => {
     menu.style.display = 'block';
 })
 
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 var chartx = localStorage.getItem('chart');
 if(!chartx){
     localStorage.setItem('chart', 'oi');
