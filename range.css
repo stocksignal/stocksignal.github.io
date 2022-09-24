@@ -223,7 +223,7 @@ input:checked+.slider:before {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -231,7 +231,7 @@ input:checked+.slider:before {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 .index_header{
     display: flex;
