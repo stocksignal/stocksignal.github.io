@@ -168,14 +168,20 @@ function populatetable(data) {
             let ce_change = tce - prev_tce;
             let pe_change = tpe - prev_tpe;
 
-            let pcr = Math.abs((pe_change / ce_change).toFixed(2));
+            let signal = "NEUTRAL";
+
+            if(ce_change > 0 && pe_change < 0){
+                signal = "SELL"
+            } else if(ce_change < 0 && pe_change > 0){
+                signal = "BUY"
+            }
 
             var temp = `<tr>
             <td>${converttoist(data[i].timestamp)}</td>
             <td>${data[i].cmp}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
-            <td>${pcr}</td>`;
+            <td>${signal}</td>`;
             rows.insertAdjacentHTML('beforeend', temp);
 
         }
@@ -196,14 +202,20 @@ function populatetable(data) {
 
             let ce_change = tce - prev_tce
             let pe_change = tpe - prev_tpe
-            let pcr = Math.abs((pe_change / ce_change).toFixed(2));
+            let signal = "NEUTRAL"
+
+            if(ce_change > 0 && pe_change < 0){
+                signal = "SELL"
+            } else if(ce_change < 0 && pe_change > 0){
+                signal = "BUY"
+            }
 
             var temp = `<tr>
             <td>${converttoist(data[i].timestamp)}</td>
             <td>${data[i].cmp}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
-            <td>${pcr}</td>`;
+            <td>${signal}</td>`;
             rows.insertAdjacentHTML('beforeend', temp);
 
         }
