@@ -165,14 +165,17 @@ function populatetable(data) {
                 [prev_tce, prev_tpe] = get_total_ce_pe_oi(prev_oidata)
             }
 
-            let ce_change = tce - prev_tce
-            let pe_change = tpe - prev_tpe
+            let ce_change = tce - prev_tce;
+            let pe_change = tpe - prev_tpe;
+
+            let pcr = Math.abs((pe_change / ce_change).toFixed(2));
 
             var temp = `<tr>
             <td>${converttoist(data[i].timestamp)}</td>
             <td>${data[i].cmp}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
-            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>`
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
+            <td>${pcr}</td>`;
             rows.insertAdjacentHTML('beforeend', temp);
 
         }
@@ -193,12 +196,14 @@ function populatetable(data) {
 
             let ce_change = tce - prev_tce
             let pe_change = tpe - prev_tpe
+            let pcr = Math.abs((pe_change / ce_change).toFixed(2));
 
             var temp = `<tr>
             <td>${converttoist(data[i].timestamp)}</td>
             <td>${data[i].cmp}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
-            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>`
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
+            <td>${pcr}</td>`;
             rows.insertAdjacentHTML('beforeend', temp);
 
         }
