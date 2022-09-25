@@ -1,13 +1,3 @@
-
-function getpricecolor() {
-    var theme = localStorage.getItem('theme');
-    if (theme == 'dark') {
-        return 'rgb(164, 190, 243)'
-    } else {
-        return 'rgb(52, 67, 188)'
-    }
-}
-
 function makechart(time, tce, tpe, price) {
     let oichart = document.getElementById('oiChart');
 
@@ -16,7 +6,7 @@ function makechart(time, tce, tpe, price) {
         label: 'Index Price',
         data: price,
         backgroundColor: 'transparent',
-        borderColor: getpricecolor(),
+        borderColor: 'rgb(52, 67, 188)',
         borderWidth: 2,
         yAxisID: "y-axis-pcr"
     };
@@ -101,19 +91,16 @@ function getoidata() {
                 let tpe = [];
 
                 for (let i = 0; i < arr.length; i++) {
-                    // if(i%3==0){
-                    if (true) {
-                        price.push(arr[i].cmp);
-                        let data = arr[i].niftyoi;
-                        time.push(converttoist(arr[i].timestamp));
-                        let ce = 0, pe = 0;
-                        data.forEach(d => {
-                            ce = ce + d.calls_change_oi;
-                            pe = pe + d.puts_change_oi;
-                        });
-                        tce.push(ce);
-                        tpe.push(pe);
-                    }
+                    price.push(arr[i].cmp);
+                    let data = arr[i].niftyoi;
+                    time.push(converttoist(arr[i].timestamp));
+                    let ce = 0, pe = 0;
+                    data.forEach(d => {
+                        ce = ce + d.calls_change_oi;
+                        pe = pe + d.puts_change_oi;
+                    });
+                    tce.push(ce);
+                    tpe.push(pe);
                 }
                 makechart(time, tce, tpe, price);
                 populatetable(out);
@@ -130,19 +117,16 @@ function getoidata() {
                 let tpe = [];
 
                 for (let i = 0; i < arr.length; i++) {
-                    // if(i%3==0){/
-                    if (true) {
-                        price.push(arr[i].cmp);
-                        let data = arr[i].bankniftyoi;
-                        time.push(converttoist(arr[i].timestamp));
-                        let ce = 0, pe = 0;
-                        data.forEach(d => {
-                            ce = ce + d.calls_change_oi;
-                            pe = pe + d.puts_change_oi;
-                        });
-                        tce.push(ce);
-                        tpe.push(pe);
-                    }
+                    price.push(arr[i].cmp);
+                    let data = arr[i].bankniftyoi;
+                    time.push(converttoist(arr[i].timestamp));
+                    let ce = 0, pe = 0;
+                    data.forEach(d => {
+                        ce = ce + d.calls_change_oi;
+                        pe = pe + d.puts_change_oi;
+                    });
+                    tce.push(ce);
+                    tpe.push(pe);
                 }
                 makechart(time, tce, tpe, price);
                 populatetable(out);
@@ -150,67 +134,73 @@ function getoidata() {
     }
 }
 
-getoidata();
+function get_total_ce_pe_oi(oidata) {
 
-document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('click', () => {
-    getoidata();
-})
+    let ce = 0, pe = 0;
+    oidata.forEach(d => {
+        ce = ce + d.calls_change_oi;
+        pe = pe + d.puts_change_oi;
+    });
+    return [ce, pe];
+}
 
-function populatetable(out) {
-    let arr = [];
-    for (let i = 0; i < out.length; i++) {
-        // if(i%3==0){
-        if (true) {
-            arr.push(out[i]);
-        }
-    }
+function populatetable(data) {
+
     let rows = document.getElementById('oirows');
     rows.innerHTML = '';
 
-    let arrx = arr.reverse();
     var index = localStorage.getItem('index');
+
     if (index == 'niftyoichangedata') {
-        for (let i = 0; i < arrx.length; i++) {
-            let data = arrx[i].niftyoi;
-            let ce = 0, pe = 0;
-            data.forEach(d => {
-                ce = ce + d.calls_change_oi;
-                pe = pe + d.puts_change_oi;
-            });
-            diff = pe - ce;
 
-            ce_text = ce.toLocaleString('en-IN');
-            pe_text = pe.toLocaleString('en-IN');
-            diff_text = diff.toLocaleString('en-IN');
+        for (let i = 0; i < data.length; i++) {
 
-            var temp = `<tr><td>${converttoist(arrx[i].timestamp)}</td>
-            <td>${ce_text}</td><td>${pe_text}</td>
-            ${diff < 0 ? `<td style="color:var(--call);">${diff_text}</td>` : `<td style="color:var(--put);">${diff_text}</td>`}
-            ${diff < 0 ? '<td style="color:var(--call);">SELL</td>' : '<td style="color:var(--put);">BUY</td>'}
-            ${diff < 0 ? `<td style="color:var(--call);">${arrx[i].cmp}</td>` : `<td style="color:var(--put);">${arrx[i].cmp}</td>`}</tr>`;
+            let [prev_tce, prev_tpe] = [0, 0];
+    
+            let oidata = data[i].niftyoi;
+            let [tce, tpe] = get_total_ce_pe_oi(oidata)
+    
+            if (i > 0) {
+                let prev_oidata = data[i-1].niftyoi;
+                [prev_tce, prev_tpe] = get_total_ce_pe_oi(prev_oidata)
+            }
+
+            let ce_change = tce - prev_tce
+            let pe_change = tpe - prev_tpe
+
+            var temp = `<tr>
+            <td>${converttoist(data[i].timestamp)}</td>
+            <td>${data[i].cmp}</td>
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>`
             rows.insertAdjacentHTML('beforeend', temp);
+
         }
-    } else if (index == 'bankniftyoichangedata') {
+    } 
+    else if (index == 'bankniftyoichangedata') {
 
-        for (let i = 0; i < arrx.length; i++) {
-            let data = arrx[i].bankniftyoi;
-            let ce = 0, pe = 0;
-            data.forEach(d => {
-                ce = ce + d.calls_change_oi;
-                pe = pe + d.puts_change_oi;
-            });
-            diff = pe - ce;
+        for (let i = 0; i < data.length; i++) {
 
-            ce_text = ce.toLocaleString('en-IN');
-            pe_text = pe.toLocaleString('en-IN');
-            diff_text = diff.toLocaleString('en-IN');
+            let [prev_tce, prev_tpe] = [0, 0];
+    
+            let oidata = data[i].bankniftyoi;
+            let [tce, tpe] = get_total_ce_pe_oi(oidata)
+    
+            if (i > 0) {
+                let prev_oidata = data[i-1].bankniftyoi;
+                [prev_tce, prev_tpe] = get_total_ce_pe_oi(prev_oidata)
+            }
 
-            var temp = `<tr><td>${converttoist(arrx[i].timestamp)}</td>
-            <td>${ce_text}</td><td>${pe_text}</td>
-            ${diff < 0 ? `<td style="color:var(--call);">${diff_text}</td>` : `<td style="color:var(--put);">${diff_text}</td>`}
-            ${diff < 0 ? '<td style="color:var(--call);">SELL</td>' : '<td style="color:var(--put);">BUY</td>'}
-            ${diff < 0 ? `<td style="color:var(--call);">${arrx[i].cmp}</td>` : `<td style="color:var(--put);">${arrx[i].cmp}</td>`}</tr>`;
+            let ce_change = tce - prev_tce
+            let pe_change = tpe - prev_tpe
+
+            var temp = `<tr>
+            <td>${converttoist(data[i].timestamp)}</td>
+            <td>${data[i].cmp}</td>
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
+            <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>`
             rows.insertAdjacentHTML('beforeend', temp);
+
         }
 
     }
@@ -227,3 +217,6 @@ function converttoist(mytime) {
     let strdate = myDate.getHours().toString() + " : " + myDate.getMinutes().toString();
     return (strdate);
 }
+
+
+getoidata();

@@ -96,88 +96,88 @@ function runoi(option) {
         .catch(err => { throw err });
 }
 
-function runpcr() {
-    let option = localStorage.getItem('index1');
-    let pcrctx = document.getElementById('pcrChart');
-    const time = [];
-    const pcr = [];
-    const price = [];
+// function runpcr() {
+//     let option = localStorage.getItem('index1');
+//     let pcrctx = document.getElementById('pcrChart');
+//     const time = [];
+//     const pcr = [];
+//     const price = [];
 
-    fetch(`https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType=+${option}+pcr`)
-        .then((res) => res.json())
-        .then((out) => {
-            let arr = out.resultData.data;
-            var data = arr.filter(function (a) {
-                return (a.time.slice(15, 16) == '0' && a.banknifty_pcr_intra_id < 385);
-            })
+//     fetch(`https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType=+${option}+pcr`)
+//         .then((res) => res.json())
+//         .then((out) => {
+//             let arr = out.resultData.data;
+//             var data = arr.filter(function (a) {
+//                 return (a.time.slice(15, 16) == '0' && a.banknifty_pcr_intra_id < 385);
+//             })
 
-            for (let i = 0; i < data.length; i++) {
-                time[i] = data[i].time.slice(11, 16);
-                pcr[i] = data[i].pcr;
-                price[i] = data[i].index_close;
-            }
-
-
-            var pcrData = {
-                label: 'PCR',
-                data: pcr,
-                backgroundColor: 'transparent',
-                borderColor: 'rgba(255, 10, 10, 0.6)',
-                yAxisID: "y-axis-pcr"
-            };
-
-            var priceData = {
-                label: 'Index Price',
-                data: price,
-                backgroundColor: 'transparent',
-                borderColor: getpricecolor(),
-                yAxisID: "y-axis-price"
-            };
-
-            var planetData = {
-                labels: time,
-                datasets: [priceData,pcrData],
-                responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                stacked: false,
-            };
-
-            var chartOptions = {
-                maintainAspectRatio:
-                        false,
-                elements:{
-                    point:{
-                        radius: 0
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        barPercentage: 1,
-                        categoryPercentage: 0.6
-                    }],
-                    yAxes: [{
-                        id: "y-axis-pcr",
-                        position: "right",
-                    }, {
-                        id: "y-axis-price",
-                        position: "left",
-                    }]
-                }
-            };
-
-            new Chart(pcrctx, {
-                type: 'line',
-                data: planetData,
-                options: chartOptions
-            });
+//             for (let i = 0; i < data.length; i++) {
+//                 time[i] = data[i].time.slice(11, 16);
+//                 pcr[i] = data[i].pcr;
+//                 price[i] = data[i].index_close;
+//             }
 
 
-        })
-        .catch((e) => { console.error(e); })
-}
+//             var pcrData = {
+//                 label: 'PCR',
+//                 data: pcr,
+//                 backgroundColor: 'transparent',
+//                 borderColor: 'rgba(255, 10, 10, 0.6)',
+//                 yAxisID: "y-axis-pcr"
+//             };
+
+//             var priceData = {
+//                 label: 'Index Price',
+//                 data: price,
+//                 backgroundColor: 'transparent',
+//                 borderColor: getpricecolor(),
+//                 yAxisID: "y-axis-price"
+//             };
+
+//             var planetData = {
+//                 labels: time,
+//                 datasets: [priceData,pcrData],
+//                 responsive: true,
+//                 interaction: {
+//                     mode: 'index',
+//                     intersect: false,
+//                 },
+//                 stacked: false,
+//             };
+
+//             var chartOptions = {
+//                 maintainAspectRatio:
+//                         false,
+//                 elements:{
+//                     point:{
+//                         radius: 0
+//                     }
+//                 },
+//                 scales: {
+//                     xAxes: [{
+//                         barPercentage: 1,
+//                         categoryPercentage: 0.6
+//                     }],
+//                     yAxes: [{
+//                         id: "y-axis-pcr",
+//                         position: "right",
+//                     }, {
+//                         id: "y-axis-price",
+//                         position: "left",
+//                     }]
+//                 }
+//             };
+
+//             new Chart(pcrctx, {
+//                 type: 'line',
+//                 data: planetData,
+//                 options: chartOptions
+//             });
+
+
+//         })
+//         .catch((e) => { console.error(e); })
+// }
 
 function changeoi(that) {
     if (that.value == 'niftyoichangedata') {
@@ -200,7 +200,7 @@ if (!option) {
 }
 document.getElementById('index').value = option;
 runoi(option);
-runpcr();
+// runpcr();
 
 function showChart() {
     localStorage.setItem('chart', 'oi');
