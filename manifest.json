@@ -5,7 +5,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "theme_color":"#000000",
-  "background_color": "#1f1f1f",
+  "background_color": "#101010",
   "description": "Stock Signal is a tool for index derivatives traders to get more insights into open interest data.",
   "icons": [
     {

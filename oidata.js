@@ -1,22 +1,23 @@
 
-function getpricecolor(){
+function getpricecolor() {
     var theme = localStorage.getItem('theme');
-    if(theme == 'dark'){
+    if (theme == 'dark') {
         return 'rgb(164, 190, 243)'
-    } else{
+    } else {
         return 'rgb(52, 67, 188)'
     }
 }
 
-function makechart(time,tce,tpe,price){
+function makechart(time, tce, tpe, price) {
     let oichart = document.getElementById('oiChart');
-    
+
     var indexdata = {
         type: 'line',
         label: 'Index Price',
         data: price,
         backgroundColor: 'transparent',
         borderColor: getpricecolor(),
+        borderWidth: 2,
         yAxisID: "y-axis-pcr"
     };
 
@@ -25,7 +26,8 @@ function makechart(time,tce,tpe,price){
         label: 'Total CE',
         data: tce,
         backgroundColor: 'transparent',
-        borderColor: 'rgba(43,135,65,0.7)',
+        borderColor: 'rgba(135,35,35,0.7)',
+        borderWidth: 2,
         yAxisID: "y-axis-price",
         borderDash: [5, 5]
     };
@@ -34,7 +36,8 @@ function makechart(time,tce,tpe,price){
         label: 'Total PE',
         data: tpe,
         backgroundColor: 'transparent',
-        borderColor: 'rgba(135,35,35,0.7)',
+        borderColor: 'rgba(43,135,65,0.7)',
+        borderWidth: 2,
         yAxisID: "y-axis-price",
         borderDash: [5, 5]
     };
@@ -52,13 +55,13 @@ function makechart(time,tce,tpe,price){
 
     var chartOptions = {
         maintainAspectRatio:
-                false,
+            false,
         elements: {
             point: {
                 radius: 0,
                 hoverRadius: 4,
             },
-            line:{
+            line: {
                 tension: 0.1
             }
         },
@@ -84,22 +87,22 @@ function makechart(time,tce,tpe,price){
     });
 }
 
-function getoidata(){
+function getoidata() {
     var index = localStorage.getItem('index');
-    if (index == 'niftyoichangedata'){
+    if (index == 'niftyoichangedata') {
         let url = 'https://oidata-server.herokuapp.com/oidata/niftyoi';
         fetch(url)
-        .then((res) => res.json())
+            .then((res) => res.json())
             .then((out) => {
                 let arr = out;
                 let time = [];
                 let price = [];
                 let tce = [];
                 let tpe = [];
-                
-                for(let i=0; i<arr.length; i++){
+
+                for (let i = 0; i < arr.length; i++) {
                     // if(i%3==0){
-                    if(true){
+                    if (true) {
                         price.push(arr[i].cmp);
                         let data = arr[i].niftyoi;
                         time.push(converttoist(arr[i].timestamp));
@@ -112,23 +115,23 @@ function getoidata(){
                         tpe.push(pe);
                     }
                 }
-                makechart(time,tce,tpe,price);
+                makechart(time, tce, tpe, price);
                 populatetable(out);
             })
-    } else if( index == 'bankniftyoichangedata'){
+    } else if (index == 'bankniftyoichangedata') {
         let url = 'https://oidata-server.herokuapp.com/oidata/bankniftyoi';
         fetch(url)
-        .then((res) => res.json())
+            .then((res) => res.json())
             .then((out) => {
                 let arr = out;
                 let time = [];
                 let price = [];
                 let tce = [];
                 let tpe = [];
-                
-                for(let i=0; i<arr.length; i++){
+
+                for (let i = 0; i < arr.length; i++) {
                     // if(i%3==0){/
-                    if(true){
+                    if (true) {
                         price.push(arr[i].cmp);
                         let data = arr[i].bankniftyoi;
                         time.push(converttoist(arr[i].timestamp));
@@ -141,7 +144,7 @@ function getoidata(){
                         tpe.push(pe);
                     }
                 }
-                makechart(time,tce,tpe,price);
+                makechart(time, tce, tpe, price);
                 populatetable(out);
             });
     }
@@ -149,54 +152,65 @@ function getoidata(){
 
 getoidata();
 
-document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('click',()=>{
+document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('click', () => {
     getoidata();
 })
 
-function populatetable(out){
+function populatetable(out) {
     let arr = [];
-    for(let i=0; i<out.length; i++){
+    for (let i = 0; i < out.length; i++) {
         // if(i%3==0){
-        if(true){
+        if (true) {
             arr.push(out[i]);
         }
     }
     let rows = document.getElementById('oirows');
-    rows.innerHTML='';
+    rows.innerHTML = '';
 
     let arrx = arr.reverse();
     var index = localStorage.getItem('index');
-    if (index == 'niftyoichangedata'){
-        for(let i=0; i<arrx.length; i++){
+    if (index == 'niftyoichangedata') {
+        for (let i = 0; i < arrx.length; i++) {
             let data = arrx[i].niftyoi;
             let ce = 0, pe = 0;
             data.forEach(d => {
                 ce = ce + d.calls_change_oi;
                 pe = pe + d.puts_change_oi;
             });
-            diff = pe-ce;
+            diff = pe - ce;
+
+            ce_text = ce.toLocaleString('en-IN');
+            pe_text = pe.toLocaleString('en-IN');
+            diff_text = diff.toLocaleString('en-IN');
+
             var temp = `<tr><td>${converttoist(arrx[i].timestamp)}</td>
-            <td>${ce}</td><td>${pe}</td>
-            ${diff<0? `<td style="color:var(--put);">${diff}</td>` : `<td style="color:var(--call);">${diff}</td>`}
-            ${diff<0? '<td style="color:var(--put);">SELL</td>' : '<td style="color:var(--call);">BUY</td>'}
-            ${diff<0? `<td style="color:var(--put);">${arrx[i].cmp}</td>` :`<td style="color:var(--call);">${arrx[i].cmp}</td>`}</tr>`;
-            rows.insertAdjacentHTML('beforeend',temp);
+            <td>${ce_text}</td><td>${pe_text}</td>
+            ${diff < 0 ? `<td style="color:var(--call);">${diff_text}</td>` : `<td style="color:var(--put);">${diff_text}</td>`}
+            ${diff < 0 ? '<td style="color:var(--call);">SELL</td>' : '<td style="color:var(--put);">BUY</td>'}
+            ${diff < 0 ? `<td style="color:var(--call);">${arrx[i].cmp}</td>` : `<td style="color:var(--put);">${arrx[i].cmp}</td>`}</tr>`;
+            rows.insertAdjacentHTML('beforeend', temp);
         }
-    } else if( index == 'bankniftyoichangedata'){
-        for(let i=0; i<arrx.length; i++){
+    } else if (index == 'bankniftyoichangedata') {
+
+        for (let i = 0; i < arrx.length; i++) {
             let data = arrx[i].bankniftyoi;
             let ce = 0, pe = 0;
             data.forEach(d => {
                 ce = ce + d.calls_change_oi;
                 pe = pe + d.puts_change_oi;
             });
-            diff = pe-ce;
+            diff = pe - ce;
+
+            ce_text = ce.toLocaleString('en-IN');
+            pe_text = pe.toLocaleString('en-IN');
+            diff_text = diff.toLocaleString('en-IN');
+
             var temp = `<tr><td>${converttoist(arrx[i].timestamp)}</td>
-            <td>${ce}</td><td>${pe}</td>
-            ${diff<0? `<td style="color:var(--put);">${diff}</td>` : `<td style="color:var(--call);">${diff}</td>`}
-            ${diff<0? '<td style="color:var(--put);">SELL</td>' : '<td style="color:var(--call);">BUY</td>'}
-            ${diff<0? `<td style="color:var(--put);">${arrx[i].cmp}</td>` :`<td style="color:var(--call);">${arrx[i].cmp}</td>`}</tr>`;
-            rows.insertAdjacentHTML('beforeend',temp);
+            <td>${ce_text}</td><td>${pe_text}</td>
+            ${diff < 0 ? `<td style="color:var(--call);">${diff_text}</td>` : `<td style="color:var(--put);">${diff_text}</td>`}
+            ${diff < 0 ? '<td style="color:var(--call);">SELL</td>' : '<td style="color:var(--put);">BUY</td>'}
+            ${diff < 0 ? `<td style="color:var(--call);">${arrx[i].cmp}</td>` : `<td style="color:var(--put);">${arrx[i].cmp}</td>`}</tr>`;
+            rows.insertAdjacentHTML('beforeend', temp);
         }
 
     }
@@ -204,12 +218,12 @@ function populatetable(out){
 
 }
 
-function converttoist(mytime){
+function converttoist(mytime) {
     var myDate = new Date(mytime);
-    if(myDate.getMinutes() == 0){
-        let strdate = myDate.getHours().toString() +" : "+ myDate.getMinutes().toString()+'0';
-        return(strdate);
+    if (myDate.getMinutes() == 0) {
+        let strdate = myDate.getHours().toString() + " : " + myDate.getMinutes().toString() + '0';
+        return (strdate);
     }
-    let strdate = myDate.getHours().toString() +" : "+ myDate.getMinutes().toString();
-    return(strdate);
+    let strdate = myDate.getHours().toString() + " : " + myDate.getMinutes().toString();
+    return (strdate);
 }

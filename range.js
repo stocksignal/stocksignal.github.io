@@ -46,12 +46,12 @@ function runoi(option) {
             if (doi > 5000000 && tpe > tce) {
                 signal.innerText = "";
                 signal.innerHTML = "Bullish";
-                signal.style.color = 'var(--call)';
+                signal.style.color = 'var(--put)';
 
             } else if (doi > 5000000 && tce > tpe) {
                 signal.innerText = "";
                 signal.innerHTML = "Bearish";
-                signal.style.color = 'var(--put)';
+                signal.style.color = 'var(--call)';
             } else {
                 signal.innerHTML = "Neutral";
                 signal.style.color = 'var(--font-color)';
@@ -73,12 +73,12 @@ function runoi(option) {
                         label: 'Change in Call OI',
                         data: calloi,
                         borderWidth: 1,
-                        backgroundColor: "rgb(33, 173, 20)",
+                        backgroundColor: "rgb(224, 36, 33)",
                     },
                     {
                         label: 'Change in Put OI',
                         data: putoi,
-                        backgroundColor: "rgb(224, 36, 33)",
+                        backgroundColor: "rgb(33, 173, 20)",
                         borderWidth: 1
                     }]
                 },
