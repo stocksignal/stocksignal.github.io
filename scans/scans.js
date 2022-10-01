@@ -97,8 +97,8 @@ function data(filter){
             stocks.innerHTML="";
             arr.forEach(ar => {
                 var temp = `<div class="card">
-                            <h3>${ar.Name} [${ar.Symb}]</h3>
-                            <h4>${ar.Info.C1} (${ar.Info.C1ZG}%)</h4>
+                            <h3>${ar.Name} <span>${ar.Symb} </span></h3>
+                            <h4>LTP : ${ar.Info.C1} (${ar.Info.C1ZG}%)</h4>
                             <p>Alert raised on : ${ar.Date.substr(0,10)}</p>
                             </div>`;
                 stocks.insertAdjacentHTML('beforeend',temp);

@@ -32,7 +32,14 @@
      4px 4px 10px var(--boxshadow2);
 }
 .card h3{
-    font-size: 14px;
+    font-size: 16px;
+}
+.card h3 span{
+    font-size: 12px;
+    background-color: var(--primary-color);
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: white;
 }
 .card h4{
     font-size: 12px;

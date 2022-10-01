@@ -3,6 +3,10 @@ const onipo = document.getElementById('onipo');
 const details = document.getElementById('details');
 
 upipo.addEventListener('click', () => {
+
+    onipo.classList.remove('button-active');
+    upipo.classList.add('button-active');
+
     let url = 'https://api.stockedge.com/Api/IPODashboardApi/GetUpcomingIPOs?page=1&pageSize=10&lang=en';
     fetch(url)
         .then((res) => res.json())
@@ -27,15 +31,16 @@ upipo.addEventListener('click', () => {
                     details.insertAdjacentHTML('beforeend', temp);
                 });
             }
-
-
-
-
         }).catch((error) => { console.log(error) });
 
 
 })
+
 onipo.addEventListener('click', () => {
+
+    upipo.classList.remove('button-active');
+    onipo.classList.add('button-active');
+
     let url = 'https://api.stockedge.com/Api/IPODashboardApi/GetOngoingIPOs';
     fetch(url)
         .then((res) => res.json())
@@ -65,7 +70,7 @@ onipo.addEventListener('click', () => {
 })
 
 
-
+onipo.click();
 
 
 /*navbar*/
