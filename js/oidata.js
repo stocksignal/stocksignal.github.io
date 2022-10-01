@@ -151,6 +151,8 @@ function populatetable(data) {
 
     var index = localStorage.getItem('index');
 
+    var oi_scan = []
+
     if (index == 'niftyoichangedata') {
 
         for (let i = 0; i < data.length; i++) {
@@ -167,7 +169,7 @@ function populatetable(data) {
 
             let ce_change = tce - prev_tce;
             let pe_change = tpe - prev_tpe;
-
+            let timestamp = converttoist(data[i].timestamp);
             let signal = "NEUTRAL";
 
             if(ce_change > 0 && pe_change < 0){
@@ -176,8 +178,15 @@ function populatetable(data) {
                 signal = "BUY"
             }
 
+            oi_scan.push({
+                'index': 'NIFTY',
+                'timestamp': timestamp,
+                'signal': signal,
+                'difference': ce_change - pe_change
+            })
+
             var temp = `<tr>
-            <td>${converttoist(data[i].timestamp)}</td>
+            <td>${timestamp}</td>
             <td>${data[i].cmp}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
@@ -210,6 +219,12 @@ function populatetable(data) {
                 signal = "BUY"
             }
 
+            oi_scan.push({
+                'index': 'BANKNIFTY',
+                'signal': signal,
+                'difference': ce_change - pe_change
+            })
+
             var temp = `<tr>
             <td>${converttoist(data[i].timestamp)}</td>
             <td>${data[i].cmp}</td>
@@ -220,6 +235,8 @@ function populatetable(data) {
 
         }
     }
+
+    scanner(oi_scan.slice(-2));
 }
 
 function converttoist(mytime) {
