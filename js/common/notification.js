@@ -13,13 +13,12 @@ function initializePushNotifications() {
 }
 
 function sendNotification(title, description) {
-    const img = "assets/stocksignals.png";
+
     const options = {
         body: description,
         icon: "assets/stocksignals.png",
         vibrate: [200, 100, 200],
         tag: "OI Alert",
-        image: img,
         badge: "https://stocksignal.github.io/assets/icon/apple-icon-180.png",
         actions: [{ action: "Detail", title: "View" }]
     };
@@ -51,5 +50,3 @@ notifyButton.addEventListener('click', ()=>{
         }
     })
 })
-
-initializePushNotifications()
