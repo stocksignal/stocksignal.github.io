@@ -182,7 +182,7 @@ function populatetable(data) {
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
             <td>${signal}</td>`;
-            rows.insertAdjacentHTML('beforeend', temp);
+            rows.insertAdjacentHTML('afterend', temp);
 
         }
     } 
@@ -216,13 +216,10 @@ function populatetable(data) {
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${ce_change.toLocaleString('en-IN')}</td>
             <td style="color:var(--${ce_change > pe_change ? "call" : "put"});">${pe_change.toLocaleString('en-IN')}</td>
             <td>${signal}</td>`;
-            rows.insertAdjacentHTML('beforeend', temp);
+            rows.insertAdjacentHTML('afterend', temp);
 
         }
-
     }
-
-
 }
 
 function converttoist(mytime) {
