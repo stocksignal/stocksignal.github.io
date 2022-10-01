@@ -2,22 +2,23 @@ const strike = [];
 const calloi = [];
 const putoi = [];
 const myniftydata = [];
-function getindexvalue(option){
+
+function getindexvalue(option) {
     const index = document.getElementById('index_value');
-    
+
     fetch('https://oidata-server.herokuapp.com/api/indexdata')
-    .then((res)=> res.json())
-    .then((out)=>{
-        if(option == 'niftyoichangedata'){
-            index.innerHTML = '';
-            index.innerHTML = out.nifty50.last_trade_price;
-        }else if(option == 'bankniftyoichangedata'){
-            index.innerHTML = '';
-            index.innerHTML = out.niftybank.last_trade_price;
-        }else{
-            index.innerHTML = '';
-        }
-    });
+        .then((res) => res.json())
+        .then((out) => {
+            if (option == 'niftyoichangedata') {
+                index.innerHTML = '';
+                index.innerHTML = out.nifty50.last_trade_price;
+            } else if (option == 'bankniftyoichangedata') {
+                index.innerHTML = '';
+                index.innerHTML = out.niftybank.last_trade_price;
+            } else {
+                index.innerHTML = '';
+            }
+        });
 }
 
 function runoi(option) {
@@ -26,7 +27,7 @@ function runoi(option) {
     fetch(url)
         .then(res => res.json())
         .then((out) => {
-            
+
             var totalce = document.getElementById("totalce");
             var totalpe = document.getElementById("totalpe");
             var diffoi = document.getElementById("diffoi");
@@ -96,89 +97,6 @@ function runoi(option) {
         .catch(err => { throw err });
 }
 
-// function runpcr() {
-//     let option = localStorage.getItem('index1');
-//     let pcrctx = document.getElementById('pcrChart');
-//     const time = [];
-//     const pcr = [];
-//     const price = [];
-
-//     fetch(`https://api.niftytrader.in/api/FinNiftyOI/niftypcrData?reqType=+${option}+pcr`)
-//         .then((res) => res.json())
-//         .then((out) => {
-//             let arr = out.resultData.data;
-//             var data = arr.filter(function (a) {
-//                 return (a.time.slice(15, 16) == '0' && a.banknifty_pcr_intra_id < 385);
-//             })
-
-//             for (let i = 0; i < data.length; i++) {
-//                 time[i] = data[i].time.slice(11, 16);
-//                 pcr[i] = data[i].pcr;
-//                 price[i] = data[i].index_close;
-//             }
-
-
-//             var pcrData = {
-//                 label: 'PCR',
-//                 data: pcr,
-//                 backgroundColor: 'transparent',
-//                 borderColor: 'rgba(255, 10, 10, 0.6)',
-//                 yAxisID: "y-axis-pcr"
-//             };
-
-//             var priceData = {
-//                 label: 'Index Price',
-//                 data: price,
-//                 backgroundColor: 'transparent',
-//                 borderColor: getpricecolor(),
-//                 yAxisID: "y-axis-price"
-//             };
-
-//             var planetData = {
-//                 labels: time,
-//                 datasets: [priceData,pcrData],
-//                 responsive: true,
-//                 interaction: {
-//                     mode: 'index',
-//                     intersect: false,
-//                 },
-//                 stacked: false,
-//             };
-
-//             var chartOptions = {
-//                 maintainAspectRatio:
-//                         false,
-//                 elements:{
-//                     point:{
-//                         radius: 0
-//                     }
-//                 },
-//                 scales: {
-//                     xAxes: [{
-//                         barPercentage: 1,
-//                         categoryPercentage: 0.6
-//                     }],
-//                     yAxes: [{
-//                         id: "y-axis-pcr",
-//                         position: "right",
-//                     }, {
-//                         id: "y-axis-price",
-//                         position: "left",
-//                     }]
-//                 }
-//             };
-
-//             new Chart(pcrctx, {
-//                 type: 'line',
-//                 data: planetData,
-//                 options: chartOptions
-//             });
-
-
-//         })
-//         .catch((e) => { console.error(e); })
-// }
-
 function changeoi(that) {
     if (that.value == 'niftyoichangedata') {
         localStorage.setItem('index', 'niftyoichangedata');
@@ -187,9 +105,8 @@ function changeoi(that) {
         localStorage.setItem('index', 'bankniftyoichangedata');
         localStorage.setItem('index1', 'banknifty');
     }
-    window.location.reload();
+    // window.location.reload();
     runoi(that.value);
-    runpcr();
 }
 
 var option = localStorage.getItem('index');
@@ -200,7 +117,6 @@ if (!option) {
 }
 document.getElementById('index').value = option;
 runoi(option);
-// runpcr();
 
 function showChart() {
     localStorage.setItem('chart', 'oi');
@@ -224,31 +140,16 @@ function showoiChart() {
     document.getElementById('oichartcontainer').style.display = 'block';
 }
 
-//navbar open-close
-const menu = document.getElementById('menu');
-const close = document.getElementById('close');
-const nav = document.getElementById('navtabs');
-menu.addEventListener('click', () => {
-    nav.style.display = 'block';
-    menu.style.display = 'none';
-    close.style.display = 'block';
-})
-close.addEventListener('click', () => {
-    nav.style.display = 'none';
-    close.style.display = 'none';
-    menu.style.display = 'block';
-})
-
 var chartx = localStorage.getItem('chart');
-if(!chartx){
+if (!chartx) {
     localStorage.setItem('chart', 'oi');
     showChart();
-}else if(chartx == 'oi'){
+} else if (chartx == 'oi') {
     showChart();
 }
-else if( chartx == 'pcr'){
+else if (chartx == 'pcr') {
     hideChart();
 }
-else if( chartx == 'oiindex'){
+else if (chartx == 'oiindex') {
     showoiChart();
 }

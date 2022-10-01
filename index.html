@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9261038294033166"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <meta name="description"
         content="Smart Indicators to find insights into index derivative markets. Change in Open Interest in the Indian indices. Find difference in the call and put options of the indices. Option Chain - NSE India" />
     <meta name="keywords"
@@ -16,7 +16,7 @@
         content="Stock Signal - Index v/s Open Interest | Change in Open Interest | Indian Stock Market | Index Derivatives">
     <meta property="og:description"
         content="Stock Signal: Find an edge in option trading by analyzing real-time open interest data in the option chain. Find difference in the call and put options of the indices. Option Chain - NSE India">
-    <meta property="og:image" content="https://stocksignal.github.io/charts/stocksignals.png">
+    <meta property="og:image" content="https://stocksignal.github.io/assets/stocksignals.png">
     <meta property="og:site_name" content="Stock Signals">
     <meta property="og:type" content="website">
     <meta name="robots" content="index,follow" />
@@ -26,25 +26,25 @@
     <link rel="manifest" href="manifest.json">
     <link rel="alternate" hreflang="en" href="https://www.stocksignal.github.io/">
     <link rel="canonical" href="https://stocksignal.github.io/" />
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="16x16">
 
-    <link rel="stylesheet" href="/range.css">
+    <link rel="stylesheet" href="/css/range.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/charts/chart.css">
+    <link rel="stylesheet" href="/css/chart.css">
     <title>Stock Signal - Index Open Interest Data tool</title>
 </head>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW95HMPDXJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-BW95HMPDXJ');
+    gtag('config', 'G-BW95HMPDXJ');
 </script>
 
 <body>
@@ -69,9 +69,10 @@
                 <li><a href="index.html">Home<i class="fa fa-home" aria-hidden="true"></i></a></li>
                 <li><a href="https://stocksignal-chatroom.herokuapp.com/">Chat Room<i class="fa fa-commenting-o"
                             aria-hidden="true"></i></a></li>
-                <li><a href="ipo/ipodetails.html">IPO details<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                <li><a href="pages/ipodetails.html">IPO details<i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i></a>
                 </li>
-                <li><a href="scans/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                <li><a href="pages/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
                 </li>
                 <li><a href="https://stocksignal.netlify.app">Blogs<i class="fa fa-rss" aria-hidden="true"></i></a></li>
             </ul>
@@ -142,6 +143,10 @@
 
             <div id="oidata">
                 <div class="tabletitle">Open Interest Data (Strikes near to ATM only)</div>
+                <div class="notification">
+                    <p>Send Alerts when OI data changes rapidly :</p>
+                    <button id="notify">Notify me</button>
+                </div>
                 <table id="oitable">
                     <thead>
                         <tr>
@@ -164,21 +169,24 @@
             <h1 style="text-align: center;">Newsfeed 📰</h1>
             <div id="newsfeed"></div>
         </div>
-        
+
     </div>
 
     <div class="footer">
-        <p><a href="/docs/privacy-policy.html">Privacy</a> / <a href="/docs/terms-and-conditions.html">Terms &
-                Conditions</a> / <a href="/docs/disclaimer.html">Disclaimer</a> / <a href="../sitemap.xml">Sitemap</a>
+        <p><a href="/pages/docs/privacy-policy.html">Privacy</a> / <a href="/pages/docs/terms-and-conditions.html">Terms
+                &
+                Conditions</a> / <a href="/pages/docs/disclaimer.html">Disclaimer</a> / <a
+                href="sitemap.xml">Sitemap</a>
         </p>
         <p> <strong>Stock Signal 2021.</strong> All Rights Reserved.</p>
     </div>
 
-    <script src="/charts/darkMode.js"></script>
+    <script async src="/js/common/darkMode.js"></script>
+    <script async src="/js/common/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-    <script src="/range.js"></script>
-    <script src="/oidata.js"></script>
-    <script defer src="/feed.js"></script>
+    <script src="/js/range.js"></script>
+    <script src="/js/oidata.js"></script>
+    <script defer src="/js/feed.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');

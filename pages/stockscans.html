@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="16x16">
     <meta itemprop="description"
         content="Stock Signal: Find an edge in option trading by analyzing open interest data in the option chain. We provide the data, you do the trading.">
     <!-- Open Graph data -->
@@ -14,14 +14,14 @@
         content="Stock Signal | Change in Open Interest | Indian Stock Market | Index Derivatives">
     <meta property="og:description"
         content="Stock Signal: Find an edge in option trading by analyzing open interest data in the option chain. We provide the data, you do the trading.">
-    <meta property="og:image" content="https://stocksignal.github.io/charts/stocksignals.png">
+    <meta property="og:image" content="https://stocksignal.github.io/assets/stocksignals.png">
     <meta property="og:site_name" content="Stock Signals">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="/range.css">
+    <link rel="stylesheet" href="/css/range.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="scans.css">
+    <link rel="stylesheet" href="/css/scans.css">
     <title>Stock Signal - Stocks with breakout scans</title>
 </head>
 
@@ -57,9 +57,9 @@
                 <li><a href="/index.html">Home<i class="fa fa-home" aria-hidden="true"></i></a></li>
                 <li><a href="https://stocksignal-chatroom.herokuapp.com/">Chat Room<i class="fa fa-commenting-o" aria-hidden="true"></i></a></li>
                 
-                <li><a href="/ipo/ipodetails.html">IPO details<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                <li><a href="/pages/ipodetails.html">IPO details<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                 </li>
-                <li><a href="/scans/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                <li><a href="/pages/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
                 </li>
                 <li><a href="https://stocksignal.netlify.app">Blogs<i class="fa fa-rss" aria-hidden="true"></i></a></li>
             </ul>
@@ -94,15 +94,16 @@
     </div>
 
     <div class="footer">
-        <p><a href="/docs/privacy-policy.html">Privacy</a> / <a href="/docs/terms-and-conditions.html">Terms &
-                Conditions</a> / <a href="/docs/disclaimer.html">Disclaimer</a> / <a href="../sitemap.xml">Sitemap</a></p>
+        <p><a href="/pages/docs/privacy-policy.html">Privacy</a> / <a href="/pages/docs/terms-and-conditions.html">Terms &
+                Conditions</a> / <a href="/pages/docs/disclaimer.html">Disclaimer</a> / <a href="sitemap.xml">Sitemap</a></p>
         <p>Stock Signal 2021. All Rights Reserved.</p>
     </div>
 
 </body>
+<script src="/js/common/darkMode.js"></script>
+<script src="/js/common/navbar.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/charts/darkMode.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<script src="scans.js"></script>
+<script src="/js/scans.js"></script>
 
 </html>

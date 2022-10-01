@@ -9,27 +9,27 @@
         content="Change in Open Interest in the Indian indices. Find difference in the call and put options of the indices. Option Chain - NSE India" />
     <meta itemprop="description"
         content="Stock Signal: Find an edge in Index option trading by analyzing real-time open interest data in the option chain. We provide the data, you do the trading.">
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/charts/stocksignals.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stocksignals.png" sizes="16x16">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="/range.css">
+    <link rel="stylesheet" href="/css/range.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <title>Stock Signal - Index Open Interest Data</title>
+    <title>Stock Signal - Index Open Interest Data</title>
 </head>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW95HMPDXJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-BW95HMPDXJ');
+    gtag('config', 'G-BW95HMPDXJ');
 </script>
 
 <body>
-   <div class="navbar">
+    <div class="navbar">
         <div class="header">
             <div class="head" onclick="window.location='/'">Stock <span>Signal</span>
             </div>
@@ -48,27 +48,32 @@
         <div class="navtabs" id="navtabs">
             <ul>
                 <li><a href="index.html">Home<i class="fa fa-home" aria-hidden="true"></i></a></li>
-                <li><a href="https://stocksignal-chatroom.herokuapp.com/">Chat Room<i class="fa fa-commenting-o" aria-hidden="true"></i></a></li>
-                
-                <li><a href="ipo/ipodetails.html">IPO details<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                <li><a href="https://stocksignal-chatroom.herokuapp.com/">Chat Room<i class="fa fa-commenting-o"
+                            aria-hidden="true"></i></a></li>
+
+                <li><a href="/pages/ipodetails.html">IPO details<i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i></a>
                 </li>
-                <li><a href="scans/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                <li><a href="/pages/stockscans.html">Market Data<i class="fa fa-line-chart" aria-hidden="true"></i></a>
                 </li>
                 <li><a href="https://stocksignal.netlify.app">Blogs<i class="fa fa-rss" aria-hidden="true"></i></a></li>
             </ul>
         </div>
         <hr>
     </div>
-    <div class="errortext"onclick="window.location='/'" style="cursor: pointer;">
-          <h2>Don't lose hope. You can still go back to <span>homepage.</span></h2>
+    <div class="errortext" onclick="window.location='/'" style="cursor: pointer;">
+        <h2>Don't lose hope. You can still go back to <span>homepage.</span></h2>
     </div>
     <div class="footer">
-        <p><a href="/docs/privacy-policy.html">Privacy</a> / <a href="/docs/terms-and-conditions.html">Terms &
-                Conditions</a> / <a href="/docs/disclaimer.html">Disclaimer</a> / <a href="../sitemap.xml">Sitemap</a></p>
+        <p><a href="/pages/docs/privacy-policy.html">Privacy</a> / <a href="/pages/docs/terms-and-conditions.html">Terms
+                &
+                Conditions</a> / <a href="/pages/docs/disclaimer.html">Disclaimer</a> / <a
+                href="sitemap.xml">Sitemap</a></p>
         <p>Stock Signal 2021. All Rights Reserved.</p>
     </div>
- </body>
+</body>
 
-<script src="/charts/darkMode.js"></script>
+<script src="/js/common/darkMode.js"></script>
+<script src="/js/common/navbar.js"></script>
 
 </html>

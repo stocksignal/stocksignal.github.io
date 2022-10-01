@@ -9,29 +9,28 @@
   "description": "Stock Signal is a tool for index derivatives traders to get more insights into open interest data.",
   "icons": [
     {
-      "src": "/charts/icon/manifest-icon-512.png",
+      "src": "/assets/icon/manifest-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/charts/icon/manifest-icon-192.png",
+      "src": "/assets/icon/manifest-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-        "src": "/charts/icon/manifest-icon-192.png",
+        "src": "/assets/icon/manifest-icon-192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
     },
     {
-      "src": "/charts/icon/manifest-icon-512.png",
+      "src": "/assets/icon/manifest-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
-      
   ]
 }

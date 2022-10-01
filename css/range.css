@@ -257,6 +257,27 @@ input:checked+.slider:before {
     align-items: center;
 }
 
+.notification{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#notify{
+    margin: 10px;
+    padding: 4px 8px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+    outline: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+#notify:hover{
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+}
+
 #oidata {
     display: flex;
     flex-direction: column;
