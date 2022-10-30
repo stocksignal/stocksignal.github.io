@@ -64,7 +64,7 @@ function handledata(out){
 }
 
 
-const url = 'https://oidata-server.herokuapp.com/api/newsfeed';
+const url = 'https://oidata-server.onrender.com/api/newsfeed';
     fetch(url)
         .then(res => res.json())
         .then((out) => {

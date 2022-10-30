@@ -6,7 +6,7 @@ const myniftydata = [];
 function getindexvalue(option) {
     const index = document.getElementById('index_value');
 
-    fetch('https://oidata-server.herokuapp.com/api/indexdata')
+    fetch('https://oidata-server.onrender.com/api/indexdata')
         .then((res) => res.json())
         .then((out) => {
             if (option == 'niftyoichangedata') {
@@ -23,7 +23,7 @@ function getindexvalue(option) {
 
 function runoi(option) {
     getindexvalue(option);
-    const url = 'https://oidata-server.herokuapp.com/api/' + option;
+    const url = 'https://oidata-server.onrender.com/api/' + option;
     fetch(url)
         .then(res => res.json())
         .then((out) => {

@@ -1,7 +1,7 @@
 const mdata = document.getElementById('mdata');
 
 function advance(){
-    let url = 'https://oidata-server.herokuapp.com/api/getadvancedecline';
+    let url = 'https://oidata-server.onrender.com/api/getadvancedecline';
     fetch(url)
     .then((res) => res.json())
     .then((out) => {
@@ -40,7 +40,7 @@ function advance(){
 }
 
 function fiidata() {
-    let url = 'https://oidata-server.herokuapp.com/api/fiidata';
+    let url = 'https://oidata-server.onrender.com/api/fiidata';
     fetch(url)
         .then((res) => res.json())
         .then((out) => {

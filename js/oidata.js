@@ -80,7 +80,7 @@ function makechart(time, tce, tpe, price) {
 function getoidata() {
     var index = localStorage.getItem('index');
     if (index == 'niftyoichangedata') {
-        let url = 'https://oidata-server.herokuapp.com/oidata/niftyoi';
+        let url = 'https://oidata-server.onrender.com/oidata/niftyoi';
         fetch(url)
             .then((res) => res.json())
             .then((out) => {
@@ -106,7 +106,7 @@ function getoidata() {
                 populatetable(out);
             })
     } else if (index == 'bankniftyoichangedata') {
-        let url = 'https://oidata-server.herokuapp.com/oidata/bankniftyoi';
+        let url = 'https://oidata-server.onrender.com/oidata/bankniftyoi';
         fetch(url)
             .then((res) => res.json())
             .then((out) => {
